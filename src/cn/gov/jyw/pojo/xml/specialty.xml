@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="specialty">
+	<typeAlias alias="specialty" type="cn.gov.jyw.pojo.specialty" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="specialtyMap" class="specialty">
+		<result property="id" column="id" />
+		<result property="specialty" column="specialty" />
+	</resultMap>
+	<select id="SelectSpecialtyAll" resultMap="specialtyMap">
+		select * from
+		specialty;
+	</select>
+
+
+</sqlMap>

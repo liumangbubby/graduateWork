@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../../css/backyard.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.6.4.js"></script>
+<script src="../../js/backyard.js">
+</script>
+<style>
+.spe_div {
+	overflow: auto;
+}
+.spe_table {
+	margin: 20px;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+.spe_title {
+	font-size: 24px;
+	font-weight: bold;
+	font-family: "新宋体", '宋体';
+}
+.table {
+	border: #aaa solid 1px;
+	margin-top: 25px;
+	border-collapse: collapse;
+	font-size: 12px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	cursor: default;
+}
+.td {
+	border: #aaa solid 1px;
+	text-align: center;
+}
+.th_1 {
+	background-color: #FF47A3;
+	color: #FFF;
+}
+.th_2 {
+	background-color: #E1F4CC;
+}
+.th_3 {
+	background-color: #4482F3;
+	color: #FFF;
+}
+.table tr:nth-child(2n) {
+	background-color: #E1F4CC;
+}
+.input {
+	width: 90px;
+	margin-left: auto;
+	margin-left: auto;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	font-family: "宋体";
+	font-size: 12px;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+	color:#C00;
+}
+.input_date{
+	background-color: #FF47A3;
+	color: #FFF;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	font-family: "宋体";
+	font-size: 12px;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+	width: 90px;
+}
+#week{
+	border:none;
+	outline:none;
+	width:50px;
+	font-size:24px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+}
+.btnn{
+	padding-top:10px;
+	padding-bottom:10px;
+	width:100px;
+	border:#0099CF solid 1px;
+	background:-moz-linear-gradient(top,#00BFFF,#00ACE6);
+	background:-webkit-linear-gradient(top,#00ACE8,#0086B6);
+	color:#FFF;
+	text-shadow:#666 0px 1px 1px;
+	font-size:14px;
+	box-shadow:#888 0px 2px 3px;
+	border-radius:3px;
+}
+.btnn:active{
+	position:relative;
+	top:1px;
+}
+</style>
+<script>
+
+$(document).ready(function(e) {
+	$("#week").focus();
+    $("*[name='n1']").dblclick(function(e) {
+        var temp=this.innerHTML;
+		var id=this.id;
+		$(this).empty();
+		$(this).append("<input type='text' value='"+temp+"' class='input' id='input'>");
+
+		moveEnd(document.getElementById('input'))
+		$("#input").blur(function(e) {
+             recover(id);
+        });
+		$('#input').keydown(function(e){
+			if(e.keyCode==13){
+				recover(id);
+			}
+		})
+    });
+	function recover(obj){
+        var temp=$('#input').val();
+    	$("#input").remove();
+		$('#'+obj).append(temp);
+
+	}
+	$("*[name='t1']").dblclick(function(e) {
+        var temp=this.innerHTML;
+		var id=this.id;
+		$(this).empty();
+		$(this).append("<input type='text' value='"+temp+"' class='input_date' id='input'>");
+
+		moveEnd(document.getElementById('input'))
+		$("#input").blur(function(e) {
+             recover(id);
+        });
+		$('#input').keydown(function(e){
+			if(e.keyCode==13){
+				recover(id);
+			}
+		})
+    });
+	/**
+ 	* 将光标移至文本框的结尾处
+ 	* 
+ 	* @param obj 文本框对象
+ 	*/
+	function moveEnd(obj) {
+		obj.focus();
+		var len = obj.value.length;
+		if (document.selection) {
+			var sel = obj.createTextRange();
+			sel.moveStart('character', len);
+			sel.collapse();
+			sel.select();
+		} else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
+			obj.selectionStart = obj.selectionEnd = len;
+		}
+	}
+	
+});
+</script>
+</head>
+
+<body class="body">
+<div class="main_div">
+  <div class="left_div">
+    <div class="left-tag">报名信息</div>
+    <div class="left-tag">历史数据</div>
+    <div class="left-tag">申报专业</div>
+    <div class="left-tag">参与状态</div>
+  </div>
+  <div class="right_div spe_div">
+  	<form action="" id="" method="post"> 
+    <p class="spe_title">辽宁省离校未就业高校毕业生专业转换及技能培训 第（<input type="text" name="week" id='week'/>）周 课程表</p>
+    <hr />
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+      <tr>
+        <td width="100" height="60" rowspan="2" class="th_1 td">科目</td>
+        <td width="100" height="30" class="td th_1">星期一</td>
+        <td width="100" class="td th_1">星期二</td>
+        <td width="100" class="td th_1">星期三</td>
+        <td width="100" class="td th_1">星期四</td>
+        <td width="100" class="td th_1">星期五</td>
+        <td width="100" rowspan="2" class="td th_1">教师</td>
+        <td width="100" rowspan="2" class="td th_1">上课人数</td>
+        <td width="100" rowspan="2" class="td th_1">上课地点</td>
+        <td width="143" rowspan="2" class="td th_1">备注</td>
+      </tr>
+      <tr>
+        <td height="30" class="td th_1" name='t1' id='tt1'>2013/5/16</td>
+        <td class="td th_1" name='t1' id='tt2'>2013/5/17</td>
+        <td class="td th_1" name='t1' id='tt3'>2013/5/18</td>
+        <td class="td th_1" name='t1' id='tt4'>2013/5/19</td>
+        <td class="td th_1" name='t1' id='tt5'>2013/5/20</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d1" name="n1">语文</td>
+        <td class="td" id="d2" name="n1">9:30-12:00</td>
+        <td class="td" id="d3" name="n1">9:30-12:00</td>
+        <td class="td" id="d4" name="n1">9:30-12:00</td>
+        <td class="td" id="d5" name="n1">9:30-12:00</td>
+        <td class="td" id="d6" name="n1">9:30-12:00</td>
+        <td class="td" id="d7" name="n1">杨迪</td>
+        <td width="80" id="d8" class="td" name="n1">28人</td>
+        <td class="td" id="d9" name="n1">沈阳</td>
+        <td  class="td" id="d10" name="n1" style="width:143px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d11" name="n1">语文</td>
+        <td class="td" id="d12" name="n1">9:30-12:00</td>
+        <td class="td" id="d13" name="n1">9:30-12:00</td>
+        <td class="td" id="d14" name="n1">9:30-12:00</td>
+        <td class="td" id="d15" name="n1">9:30-12:00</td>
+        <td class="td" id="d16" name="n1">9:30-12:00</td>
+        <td class="td" id="d17" name="n1">杨迪</td>
+        <td width="80" id="d18" class="td" name="n1">28人</td>
+        <td class="td" id="d19" name="n1">沈阳</td>
+        <td class="td" id="d20" name="n1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d21" name="n1">语文</td>
+        <td class="td" id="d22" name="n1">9:30-12:00</td>
+        <td class="td" id="d23" name="n1">9:30-12:00</td>
+        <td class="td" id="d24" name="n1">9:30-12:00</td>
+        <td class="td" id="d25" name="n1">9:30-12:00</td>
+        <td class="td" id="d26" name="n1">9:30-12:00</td>
+        <td class="td" id="d27" name="n1">杨迪</td>
+        <td width="80" id="d28" class="td" name="n1">28人</td>
+        <td class="td" id="d29" name="n1">沈阳</td>
+        <td class="td" id="d30" name="n1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d31" name="n1">语文</td>
+        <td class="td" id="d32" name="n1">9:30-12:00</td>
+        <td class="td" id="d33" name="n1">9:30-12:00</td>
+        <td class="td" id="d34" name="n1">9:30-12:00</td>
+        <td class="td" id="d35" name="n1">9:30-12:00</td>
+        <td class="td" id="d36" name="n1">9:30-12:00</td>
+        <td class="td" id="d37" name="n1">杨迪</td>
+        <td width="80" id="d38" class="td" name="n1">28人</td>
+        <td class="td" id="d39" name="n1">沈阳</td>
+        <td class="td" id="d40" name="n1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d41" name="n1">语文</td>
+        <td class="td" id="d42" name="n1">9:30-12:00</td>
+        <td class="td" id="d43" name="n1">9:30-12:00</td>
+        <td class="td" id="d44" name="n1">9:30-12:00</td>
+        <td class="td" id="d45" name="n1">9:30-12:00</td>
+        <td class="td" id="d46" name="n1">9:30-12:00</td>
+        <td class="td" id="d47" name="n1">杨迪</td>
+        <td width="80" id="d48" class="td" name="n1">28人</td>
+        <td class="td" id="d49" name="n1">沈阳</td>
+        <td class="td" id="d50" name="n1">&nbsp;</td>
+      </tr>
+     <tr>
+        <td height="60" class="td" id="d51" name="n1">语文</td>
+        <td class="td" id="d52" name="n1">9:30-12:00</td>
+        <td class="td" id="d53" name="n1">9:30-12:00</td>
+        <td class="td" id="d54" name="n1">9:30-12:00</td>
+        <td class="td" id="d55" name="n1">9:30-12:00</td>
+        <td class="td" id="d56" name="n1">9:30-12:00</td>
+        <td class="td" id="d57" name="n1">杨迪</td>
+        <td width="80" id="d58" class="td" name="n1">28人</td>
+        <td class="td" id="d59" name="n1">沈阳</td>
+        <td class="td" id="d60" name="n1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d71" name="n1">语文</td>
+        <td class="td" id="d72" name="n1">9:30-12:00</td>
+        <td class="td" id="d73" name="n1">9:30-12:00</td>
+        <td class="td" id="d74" name="n1">9:30-12:00</td>
+        <td class="td" id="d75" name="n1">9:30-12:00</td>
+        <td class="td" id="d76" name="n1">9:30-12:00</td>
+        <td class="td" id="d77" name="n1">杨迪</td>
+        <td width="80" id="d78" class="td" name="n1">28人</td>
+        <td class="td" id="d79" name="n1">沈阳</td>
+        <td class="td" id="d80" name="n1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="60" class="td" id="d91" name="n1">语文</td>
+        <td class="td" id="d92" name="n1">9:30-12:00</td>
+        <td class="td" id="d93" name="n1">9:30-12:00</td>
+        <td class="td" id="d94" name="n1">9:30-12:00</td>
+        <td class="td" id="d95" name="n1">9:30-12:00</td>
+        <td class="td" id="d96" name="n1">9:30-12:00</td>
+        <td class="td" id="d97" name="n1">杨迪</td>
+        <td width="80" id="d98" class="td" name="n1">28人</td>
+        <td class="td" id="d99" name="n1">沈阳</td>
+        <td class="td" id="d100" name="n1">&nbsp;</td>
+      </tr>
+    </table>
+    <p>
+    	<input type="button" class="btnn" value="提&nbsp;交"/>
+        <input type="reset" class="btnn" value="返&nbsp;回"/>
+    </p>
+    </form>
+  </div>
+</div>
+</body>
+</html>

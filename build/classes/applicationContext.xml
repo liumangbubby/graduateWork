@@ -1,0 +1,427 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- CXF配置文件 -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<!-- 结束 -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		lazy-init="true">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!-- 已经设置避免MySQL长时间不使用，数据库断开连接 -->
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/stu?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 初始大小 -->
+		<property name="initialSize" value="20"></property>
+		<!-- 最大上限 -->
+		<property name="maxActive" value="500"></property>
+		<!-- 最大空闲连接数 -->
+		<property name="maxIdle" value="50"></property>
+		<!-- 最小空闲连接数 -->
+		<property name="minIdle" value="5"></property>
+	</bean>
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置哪些类的方法需要进行事务管理 -->
+	<aop:config>
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* cn.gov.jyw.service.*.*(..))" />
+
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+
+	<!-- *************** DAO *************************************************************************** -->
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+		lazy-init="true">
+		<property name="configLocation" value="classpath:SqlMapConfig.xml"></property>
+	</bean>
+
+	<bean id="StuEnrollDAO" class="cn.gov.jyw.dao.StuEnrollDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="NationDAO" class="cn.gov.jyw.dao.NationDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="UserDAO" class="cn.gov.jyw.dao.UserDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="SpecialtyReportDAO" class="cn.gov.jyw.dao.SpecialtyReportDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="JoinStateDAO" class="cn.gov.jyw.dao.JoinStateDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="YearDAO" class="cn.gov.jyw.dao.YearDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="PoliticsDAO" class="cn.gov.jyw.dao.PoliticsDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="SpecialtyDAO" class="cn.gov.jyw.dao.SpecialtyDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="EduSchoolDAO" class="cn.gov.jyw.dao.EduSchoolDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="ClassInfoDAO" class="cn.gov.jyw.dao.ClassInfoDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="SystemDAO" class="cn.gov.jyw.dao.SystemDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="StuRecordDAO" class="cn.gov.jyw.dao.StuRecordDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="PlaceDAO" class="cn.gov.jyw.dao.PlaceDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="RefDAO" class="cn.gov.jyw.dao.RefDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="ScheduleDAO" class="cn.gov.jyw.dao.ScheduleDAO"
+		lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="StopDAO" class="cn.gov.jyw.dao.StopDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="RemarkDAO" class="cn.gov.jyw.dao.RemarkDAO" lazy-init="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- *************** Bean *************************************************************************** -->
+
+	<bean id="IDCard" class="cn.gov.jyw.bean.IDCard" lazy-init="true">
+	</bean>
+	<bean id="ZipUtil" class="cn.gov.jyw.bean.ZipUtil" lazy-init="true"></bean>
+	<bean id="CheckBean" class="cn.gov.jyw.bean.CheckBean" lazy-init="true"
+		scope="singleton">
+		<property name="yearService" ref="YearService"></property>
+		<property name="specialtyService" ref="SpecialtyService"></property>
+		<property name="politicsService" ref="PoliticsService"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="systemService" ref="SystemService"></property>
+		<property name="placeService" ref="PlaceService"></property>
+	</bean>
+
+	<bean id="ExcelBean" class="cn.gov.jyw.bean.ExcelBean" lazy-init="true">
+		<property name="card" ref="IDCard"></property>
+		<property name="checkBean" ref="CheckBean"></property>
+		<property name="zipUtil" ref="ZipUtil"></property>
+	</bean>
+	<bean id="PageBean" class="cn.gov.jyw.bean.PageBean" scope="prototype"
+		lazy-init="true">
+	</bean>
+	<bean id="Task" class="cn.gov.jyw.bean.Task" lazy-init="true">
+	</bean>
+
+	<!-- *************** Service *************************************************************************** -->
+
+	<bean id="SchoolEnrollService" class="cn.gov.jyw.service.SchoolEnrollService"
+		lazy-init="true">
+		<property name="stuEnrollDAO" ref="StuEnrollDAO"></property>
+		<property name="excelBean" ref="ExcelBean"></property>
+	</bean>
+
+	<bean id="StuEnrollService" class="cn.gov.jyw.service.StuEnrollService"
+		lazy-init="true">
+		<property name="nationDAO" ref="NationDAO"></property>
+		<property name="stuEnrollDAO" ref="StuEnrollDAO"></property>
+		<property name="userDAO" ref="UserDAO"></property>
+		<property name="excelBean" ref="ExcelBean"></property>
+	</bean>
+	<bean id="LoginService" class="cn.gov.jyw.service.LoginService"
+		lazy-init="true">
+		<property name="userDAO" ref="UserDAO"></property>
+	</bean>
+	<bean id="EnrollManageService" class="cn.gov.jyw.service.EnrollManageService"
+		lazy-init="true">
+		<property name="stuEnrollDAO" ref="StuEnrollDAO"></property>
+	</bean>
+	<bean id="SpecialtyReportService" class="cn.gov.jyw.service.SpecialtyReportService"
+		lazy-init="true">
+		<property name="specialtyReportDAO" ref="SpecialtyReportDAO" />
+		<property name="classInfoDAO" ref="ClassInfoDAO"></property>
+		<property name="refDAO" ref="RefDAO"></property>
+	</bean>
+	<bean id="JoinStateService" class="cn.gov.jyw.service.JoinStateService"
+		lazy-init="true">
+		<property name="joinStateDAO" ref="JoinStateDAO"></property>
+	</bean>
+	<bean id="YearService" class="cn.gov.jyw.service.YearService"
+		lazy-init="true">
+		<property name="yearDAO" ref="YearDAO"></property>
+	</bean>
+	<bean id="PoliticsService" class="cn.gov.jyw.service.PoliticsService"
+		lazy-init="true">
+		<property name="politicsDAO" ref="PoliticsDAO"></property>
+	</bean>
+	<bean id="SpecialtyService" class="cn.gov.jyw.service.SpecialtyService"
+		lazy-init="true">
+		<property name="specialtyDAO" ref="SpecialtyDAO"></property>
+	</bean>
+	<bean id="EduSchoolService" class="cn.gov.jyw.service.EduSchoolService"
+		lazy-init="true">
+		<property name="eduSchoolDAO" ref="EduSchoolDAO"></property>
+		<property name="refDAO" ref="RefDAO"></property>
+		<property name="classInfoDAO" ref="ClassInfoDAO"></property>
+	</bean>
+	<bean id="ClassInfoService" class="cn.gov.jyw.service.ClassInfoService"
+		lazy-init="true">
+		<property name="classInfoDAO" ref="ClassInfoDAO"></property>
+		<property name="stuEnrollDAO" ref="StuEnrollDAO"></property>
+		<property name="stuRecordDAO" ref="StuRecordDAO"></property>
+		<property name="scheduleDAO" ref="ScheduleDAO"></property>
+	</bean>
+	<bean id="UserService" class="cn.gov.jyw.service.UserService"
+		lazy-init="true">
+		<property name="userDAO" ref="UserDAO"></property>
+	</bean>
+	<bean id="SystemService" class="cn.gov.jyw.service.SystemService"
+		lazy-init="true">
+		<property name="systemDAO" ref="SystemDAO"></property>
+	</bean>
+	<bean id="StuRecordService" class="cn.gov.jyw.service.StuRecordService"
+		lazy-init="true">
+		<property name="stuRecordDAO" ref="StuRecordDAO"></property>
+		<property name="excelBean" ref="ExcelBean"></property>
+		<property name="nationDAO" ref="NationDAO"></property>
+		<property name="stuEnrollDAO" ref="StuEnrollDAO"></property>
+		<property name="classInfoDAO" ref="ClassInfoDAO"></property>
+	</bean>
+	<bean id="PlaceService" class="cn.gov.jyw.service.PlaceService"
+		lazy-init="true">
+		<property name="placeDAO" ref="PlaceDAO"></property>
+	</bean>
+	<bean id="RefService" class="cn.gov.jyw.service.RefService"
+		lazy-init="true">
+		<property name="refDAO" ref="RefDAO"></property>
+	</bean>
+	<bean id="ScheduleService" class="cn.gov.jyw.service.ScheduleService"
+		lazy-init="true">
+		<property name="scheduleDAO" ref="ScheduleDAO"></property>
+	</bean>
+	<bean id="StopService" class="cn.gov.jyw.service.StopService"
+		lazy-init="true">
+		<property name="stopDAO" ref="StopDAO"></property>
+	</bean>
+	<bean id="RemarkService" class="cn.gov.jyw.service.RemarkService" lazy-init="true">
+		<property name="remarkDAO" ref="RemarkDAO"></property>
+	</bean>
+	<!-- *************** Action *************************************************************************** -->
+
+	<bean id="SchoolEnrollAction" class="cn.gov.jyw.action.enroll.SchoolEnrollAction"
+		lazy-init="true">
+		<property name="schoolEnrollService" ref="SchoolEnrollService"></property>
+	</bean>
+
+	<bean id="StuEnrollAction" class="cn.gov.jyw.action.enroll.StuEnrollAction"
+		lazy-init="true">
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="checkBean" ref="CheckBean"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="placeService" ref="PlaceService"></property>
+		<property name="eduSchoolDAO" ref="EduSchoolDAO"></property>
+		<property name="remarkService" ref="RemarkService"></property>
+	</bean>
+	<bean id="LoginAction" class="cn.gov.jyw.action.backyard.LoginAction"
+		lazy-init="true">
+		<property name="loginService" ref="LoginService"></property>
+		<property name="pageBean" ref="PageBean"></property>
+		<property name="enrollManageService" ref="EnrollManageService"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="joinStateService" ref="JoinStateService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="userService" ref="UserService"></property>
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="remarkService" ref="RemarkService"></property>
+	</bean>
+	<bean id="ManageAction" class="cn.gov.jyw.action.backyard.ManageAction"
+		lazy-init="true">
+		<property name="enrollManageService" ref="EnrollManageService"></property>
+		<property name="pageBean" ref="PageBean"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="joinStateService" ref="JoinStateService"></property>
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="yearService" ref="YearService"></property>
+		<property name="politicsService" ref="PoliticsService"></property>
+		<property name="specialtyService" ref="SpecialtyService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="placeService" ref="PlaceService"></property>
+		<property name="remarkService" ref="RemarkService"></property>
+	</bean>
+	<bean id="SpecialtyReporAction" class="cn.gov.jyw.action.backyard.SpecialtyReporAction"
+		lazy-init="true">
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+	</bean>
+	<bean id="JoinStateAction" class="cn.gov.jyw.action.backyard.JoinStateAction"
+		lazy-init="true">
+		<property name="joinStateService" ref="JoinStateService"></property>
+	</bean>
+	<bean id="ClassInfoAction" class="cn.gov.jyw.action.backyard.ClassInfoAction"
+		lazy-init="true">
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="stuRecordService" ref="StuRecordService"></property>
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+	</bean>
+	<bean id="EduSchoolAction" class="cn.gov.jyw.action.backyard.EduSchoolAction"
+		lazy-init="true">
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="refService" ref="RefService"></property>
+		<property name="remarkService" ref="RemarkService"></property>
+	</bean>
+	<bean id="UserAction" class="cn.gov.jyw.action.backyard.UserAction"
+		lazy-init="true">
+		<property name="userService" ref="UserService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+	</bean>
+	<bean id="YearAction" class="cn.gov.jyw.action.backyard.YearAction"
+		lazy-init="true">
+		<property name="yearService" ref="YearService"></property>
+	</bean>
+	<bean id="SystemAction" class="cn.gov.jyw.action.backyard.SystemAction"
+		lazy-init="true">
+		<property name="systemService" ref="SystemService"></property>
+		<property name="yearService" ref="YearService"></property>
+		<property name="enrollManageService" ref="EnrollManageService"></property>
+		<property name="stuRecordService" ref="StuRecordService"></property>
+		<property name="checkBean" ref="CheckBean"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="remarkService" ref="RemarkService"></property>
+	</bean>
+	<bean id="StuRecordAction" class="cn.gov.jyw.action.backyard.StuRecordAction"
+		lazy-init="true">
+		<property name="stuRecordService" ref="StuRecordService"></property>
+		<property name="pageBean" ref="PageBean"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="joinStateService" ref="JoinStateService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="yearService" ref="YearService"></property>
+		<property name="specialtyService" ref="SpecialtyService"></property>
+		<property name="politicsService" ref="PoliticsService"></property>
+		<property name="placeService" ref="PlaceService"></property>
+	</bean>
+	<bean id="PlaceAction" class="cn.gov.jyw.action.backyard.PlaceAction"
+		lazy-init="true">
+		<property name="placeService" ref="PlaceService"></property>
+	</bean>
+	<bean id="ScheduleAction" class="cn.gov.jyw.action.backyard.ScheduleAction"
+		lazy-init="true">
+		<property name="scheduleService" ref="ScheduleService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="excelBean" ref="ExcelBean"></property>
+	</bean>
+	<bean id="StopAction" class="cn.gov.jyw.action.backyard.StopAction"
+		lazy-init="true">
+		<property name="stopService" ref="StopService"></property>
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+		<property name="excelBean" ref="ExcelBean"></property>
+	</bean>
+
+
+	<!-- Web服务 -->
+	<bean lazy-init="true" class="cn.gov.jyw.service.web.HelloImpl"
+		id="Hello">
+	</bean>
+	<jaxws:endpoint id="helloWorld" implementor="#Hello"
+		address="/HelloWorld"></jaxws:endpoint>
+	<!-- 登陆服务 -->
+	<bean id="Login" class="cn.gov.jyw.service.web.LoginImpl"
+		lazy-init="true">
+		<property name="loginService" ref="LoginService"></property>
+	</bean>
+	<jaxws:endpoint id="LoginPoint" implementor="#Login"
+		address="/Login"></jaxws:endpoint>
+	<!-- 班级服务 -->
+	<bean id="ClassInfoImpl" class="cn.gov.jyw.service.web.ClassInfoImpl"
+		lazy-init="true">
+		<property name="classInfoService" ref="ClassInfoService"></property>
+	</bean>
+	<jaxws:endpoint id="ClassInfoPoint" implementor="#ClassInfoImpl"
+		address="/ClassInfo"></jaxws:endpoint>
+	<!-- 学校服务 -->
+	<bean id="EduSchoolImpl" class="cn.gov.jyw.service.web.EduSchoolImpl"
+		lazy-init="true">
+		<property name="eduSchoolService" ref="EduSchoolService"></property>
+	</bean>
+	<jaxws:endpoint id="EduSchoolPoint" implementor="#EduSchoolImpl"
+		address="/EduSchool"></jaxws:endpoint>
+	<!-- 申报专业服务 -->
+	<bean id="SpecialtyReportImpl" class="cn.gov.jyw.service.web.SpecialtyReportImpl"
+		lazy-init="true">
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+	</bean>
+	<jaxws:endpoint id="SpecialtyReportPoint" implementor="#SpecialtyReportImpl"
+		address="/SpecialtyReport"></jaxws:endpoint>
+	<!-- 报名信息服务 -->
+	<bean id="StuEnrollImpl" class="cn.gov.jyw.service.web.StuEnrollImpl"
+		lazy-init="true">
+		<property name="stuEnrollService" ref="StuEnrollService"></property>
+		<property name="classInfoService" ref="ClassInfoService"></property>
+	</bean>
+	<jaxws:endpoint id="StuEnrollPoint" implementor="#StuEnrollImpl"
+		address="/StuEnroll"></jaxws:endpoint>
+</beans>

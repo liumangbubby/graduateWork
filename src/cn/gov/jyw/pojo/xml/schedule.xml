@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="schedule">
+	<typeAlias alias="schedule" type="cn.gov.jyw.pojo.schedule" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	
+	<select id="SelectSchedule_1" parameterClass="HashMap"
+		resultClass="cn.gov.jyw.pojo.schedule">
+		SELECT
+		* FROM
+		(SELECT
+		class_no,
+		school,
+		upload_time,
+		upload_user,
+		week,
+		lack
+		FROM
+		schedule
+		<dynamic prepend="where">
+			<isNotNull property="school" prepend='and'>
+				school=#school#
+			</isNotNull>
+			<isNotNull property="classNo" prepend='and'>
+				class_no=#classNo#
+			</isNotNull>
+			<isEqual property="filter" compareValue="upload" prepend="and">
+				lack=0
+			</isEqual>
+			<isEqual property="filter" compareValue="unupload" prepend="and">
+				lack!=0
+			</isEqual>
+
+		</dynamic>
+		ORDER BY WEEK DESC) t
+		GROUP BY class_no;
+	</select>
+	<select id='SelectSchedule_2' resultClass='String'>
+		SELECT DISTINCT school
+		FROM schedule;
+	</select>
+	<select id='SelectSchedule_3' parameterClass='HashMap'
+		resultClass='String'>
+		SELECT DISTINCT class_no FROM schedule
+		<dynamic>
+			<isNotNull property="school">
+				WHERE school=#school#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="SelectSchedule_4" parameterClass="String"
+		resultClass="cn.gov.jyw.pojo.schedule">
+		SELECT * FROM schedule WHERE id=(SELECT MAX(id) FROM
+		SCHEDULE WHERE class_no=#classNo#) ;
+	</select>
+	<select id="SelectSchedule_5" parameterClass="String"
+		resultClass="cn.gov.jyw.pojo.schedule">
+		SELECT * FROM schedule WHERE week>0 and class_no=#classNo#;
+	</select>
+	<select id="SelectSchedule_6" parameterClass="HashMap"
+		resultClass="cn.gov.jyw.pojo.schedule">
+		SELECT * FROM SCHEDULE WHERE class_no=#classNo# AND
+		WEEK=#week#;
+	</select>
+	<select id="SelectSchedule_7" parameterClass="HashMap" resultClass="int">
+		SELECT COUNT(*) FROM SCHEDULE WHERE  WEEK=#week# AND class_no=#classNo# ;
+	</select>
+
+	<insert id="InsertSchedule" parameterClass="cn.gov.jyw.pojo.schedule">
+	INSERT INTO
+	schedule(class_no,school,upload_time,upload_user,week,day_1,day_2,day_3,day_4,day_5,lack,teacher,place,remark,subject,number) 
+	VALUES(#class_no#,#school#,now(),#upload_user#,#week#,#day_1#,#day_2#,#day_3#,#day_4#,#day_5#,#lack#,#teacher#,#place#,#remark#,#subject#,#number#) 
+	</insert>
+	<delete id="DeleteSchedule_1" parameterClass="List">
+		DELETE FROM SCHEDULE WHERE class_no IN(SELECT NAME FROM class_info
+		WHERE id IN
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+		);
+	</delete>
+	<delete id="DeleteSchedule_2" parameterClass="HashMap">
+		DELETE FROM SCHEDULE WHERE week=#week# AND class_no=#classNo#
+	</delete>
+	<update id="UpdateSchedule_1" parameterClass="cn.gov.jyw.pojo.schedule">
+		UPDATE SCHEDULE SET
+		upload_time=now(),upload_user=#upload_user#,
+		day_1=#day_1#,day_2=#day_2#,day_3=#day_3#,
+		day_4=#day_4#,day_5=#day_5#,teacher=#teacher#,number=#number#,place=#place#,remark=#remark#,subject=#subject#
+		WHERE class_no=#class_no# AND week=#week#;
+	</update>
+
+</sqlMap>

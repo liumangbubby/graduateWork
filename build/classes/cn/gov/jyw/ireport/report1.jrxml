@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="516" leftMargin="42" rightMargin="37" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.464100000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="660"/>
+	<parameter name="pid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from stu_enroll where pid=$P{pid}]]>
+	</queryString>
+	<field name="id" class="java.math.BigInteger"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="sex" class="java.lang.String"/>
+	<field name="nation" class="java.lang.String"/>
+	<field name="pid" class="java.lang.String"/>
+	<field name="gradute_g" class="java.lang.String"/>
+	<field name="gradute_y" class="java.lang.String"/>
+	<field name="gradute_d" class="java.sql.Date"/>
+	<field name="education" class="java.lang.String"/>
+	<field name="specialty" class="java.lang.String"/>
+	<field name="healthy" class="java.lang.String"/>
+	<field name="politics" class="java.lang.String"/>
+	<field name="birthday" class="java.sql.Date"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="household" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="home_address" class="java.lang.String"/>
+	<field name="home_tel" class="java.lang.String"/>
+	<field name="specialty_submit" class="java.lang.String"/>
+	<field name="intention" class="java.lang.String"/>
+	<field name="remark" class="java.lang.String"/>
+	<field name="class_no" class="java.lang.String"/>
+	<field name="create_time" class="java.sql.Timestamp"/>
+	<field name="stu_no" class="java.lang.String"/>
+	<field name="join_state" class="java.lang.String"/>
+	<field name="edu_school" class="java.lang.String"/>
+	<field name="skilled" class="java.lang.String"/>
+	<field name="place" class="java.lang.String"/>
+	<field name="change_place" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="516" height="38"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[辽宁省离校未就业高校毕业生专业转换及技能提升培训]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="516" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isStrikeThrough="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[学员登记表]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="665" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="0" width="80" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="157" y="0" width="58" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="0" width="124" height="152"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="418" width="77" height="203"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="418" width="439" height="203"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="621" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="621" width="233" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="621" width="79" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="621" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="0" width="56" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="321" y="0" width="71" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="38" width="315" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="38" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="76" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="76" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="76" width="57" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="322" y="76" width="70" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="114" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="114" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="114" width="57" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="322" y="114" width="70" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="152" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="152" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="152" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="152" width="124" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="190" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="190" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="190" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="190" width="124" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="228" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="228" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="228" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="228" width="124" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="266" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="266" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="266" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="266" width="124" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="304" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="304" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="304" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="392" y="304" width="124" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="342" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="77" y="342" width="188" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="342" width="83" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="348" y="342" width="168" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="215" y="0" width="50" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[姓名]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="0" width="80" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="0" width="58" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[性别]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[身份证号]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="38" width="315" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="76" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[毕业院校]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="76" width="58" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[毕业年届]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="76" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradute_g}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="76" width="54" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradute_y}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="362" y="76" width="31" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[年]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[毕业时间]]></text>
+			</staticText>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="77" y="114" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradute_d}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="114" width="57" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[学历]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="322" y="114" width="70" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{education}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="152" width="127" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[健康状况]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="152" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[所学专业]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="152" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{specialty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="152" width="124" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{healthy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="190" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[政治面貌]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="190" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{politics}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="190" width="127" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[出生日期]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="215" y="0" width="50" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="0" width="56" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[民族]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="321" y="0" width="71" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nation}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="392" y="190" width="124" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{birthday}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="228" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[现居住地]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="228" width="127" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[户籍所在地]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="77" y="228" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="392" y="228" width="124" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{household}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="266" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[移动电话]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="266" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="266" width="127" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="392" y="266" width="124" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10" rightIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="304" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[家庭住址]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="77" y="304" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{home_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="304" width="127" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[家庭联系电话]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="392" y="304" width="124" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10" rightIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{home_tel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="342" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[拟申报专业]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="342" width="188" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{specialty_submit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="265" y="342" width="83" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[拟培训地点]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="348" y="342" width="168" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{place}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="418" width="16" height="179"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-V"/>
+				</textElement>
+				<text><![CDATA[省级审核机构]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="418" width="16" height="179"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-V"/>
+				</textElement>
+				<text><![CDATA[审核意见]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="584" width="121" height="24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[年         月         日]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="621" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[备注]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="621" width="79" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[学生签名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="38" width="41" height="76"/>
+				<textElement textAlignment="Center">
+					<font size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[照片]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="380" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="380" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[备注]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="77" y="380" width="439" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="77" y="380" width="439" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Boolean($F{remark}==null) ? "":$F{remark}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="516" height="20"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[表格内容由就业网自动生成]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

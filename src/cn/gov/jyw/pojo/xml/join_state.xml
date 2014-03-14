@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="join_state">
+	<typeAlias alias="join_state" type="cn.gov.jyw.pojo.join_state" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="JoinStateMap" class="join_state">
+		<result property="id" column="id" />
+		<result property="state" column="state" />
+	</resultMap>
+
+	<select id="SelectStateAll" resultMap="JoinStateMap">
+		select * from join_state
+	</select>
+	<delete id="DeleteJoinState" parameterClass="java.util.List">
+		delete from join_state
+		where id in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+	<insert id="InsertJoinState" parameterClass="java.lang.String">
+		insert into
+		join_state(state) values(#state#);
+	</insert>
+</sqlMap>
+    

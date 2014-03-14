@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../../css/backyard.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.6.4.js"></script>
+<script src="../../js/backyard.js">
+</script>
+<style>
+.modify_table {
+	margin: 25px 0 0 20px;
+	border:#CCC 1px solid;
+		border-collapse:collapse;
+}
+.modify_in_1 {
+	width: 300px;
+	height: 25px;
+	padding-left: 5px;
+	border-bottom:solid #333 1px;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+.modify_select{
+	width: 180px;
+	height: 30px;
+}
+.modify_td{
+	font-size:13px;
+	padding-right:20px;
+	letter-spacing:2px;
+	padding-left:20px;
+	border:#CCC 1px solid;
+}
+.btn_1{
+	background:#AE0057; 
+	border:solid 2px #FFF; 
+	height:45px; 
+	width:150px;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	-moz-box-shadow: 2px 2px 10px #909090;
+	-webkit-box-shadow: 2px 2px 5px #909090;
+	-webkit-border-radius: 5px;;
+	-moz-border-radius: 5px;;
+	border-radius: 5px;
+	color:#EEE;
+	margin-right:13px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size:14px;
+	letter-spacing:2px;
+	
+}.btn_1:hover{
+	border:solid 2px; 
+}
+.btn_1:active{
+	border:solid 2px; 
+	background:#AE0057;
+}
+</style>
+</head>
+
+<body class="body">
+<div class="main_div">
+  <div class="left_div">
+    <div class="left-tag">报名信息</div>
+    <div class="left-tag">历史数据</div>
+    <div class="left-tag">申报专业</div>
+    <div class="left-tag">参与状态</div>
+  </div>
+  <div class="right_div">
+  <div style="overflow:auto; height:750px;">
+    <fieldset class="set" onmouseover="inSearch()" onmouseout="outSearch()" style="width:690px;">
+      <legend class="leg">申报信息修改</legend>
+      
+      <table width="650" border="0" cellpadding="0" cellspacing="0" class="modify_table">
+        <tr>
+          <td width="110" height="52" align="right" class="modify_td">姓名：</td>
+          <td class="modify_td"><label for="textfield"></label>
+            <input name="textfield" type="text" class="modify_in_1" id="textfield" /></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">性别：</td>
+          <td class="modify_td"><label for="select"></label>
+
+                <input type="radio" name="RadioGroup1" value="男" id="RadioGroup1_0" />
+                男
+
+                <input type="radio" name="RadioGroup1" value="女" id="RadioGroup1_1" />
+                女
+
+</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">民族：</td>
+          <td class="modify_td"><label for="select"></label>
+            <select name="select" class="modify_select" id="select">
+          </select></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">身份证号：</td>
+          <td class="modify_td"><input name="textfield2" type="text" class="modify_in_1" id="textfield2" /></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">毕业院校：</td>
+          <td class="modify_td"><input name="textfield3" type="text" class="modify_in_1" id="textfield3" /></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">毕业年届：</td>
+          <td class="modify_td"><select name="select2" class="modify_select" id="select2">
+            <option>2010届</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">毕业时间：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">学历：</td>
+          <td class="modify_td"><select name="select3" class="modify_select" id="select3">
+            <option value="普通高校专科">普通高校专科</option>
+            <option value="普通高校本科">普通高校本科</option>
+            <option value="普通高校研究生及以上">普通高校研究生及以上</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">所学专业：</td>
+          <td class="modify_td"><select name="select4" class="modify_select" id="select4">
+            <option value="普通高校专科">普通高校专科</option>
+            <option value="普通高校本科">普通高校本科</option>
+            <option value="普通高校研究生及以上">普通高校研究生及以上</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">政治面貌：</td>
+          <td class="modify_td"><select name="select5" class="modify_select" id="select5">
+            <option value="普通高校专科">普通高校专科</option>
+            <option value="普通高校本科">普通高校本科</option>
+            <option value="普通高校研究生及以上">普通高校研究生及以上</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">出生日期：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">现居住地：</td>
+          <td class="modify_td"><input name="textfield4" type="text" class="modify_in_1" id="textfield4" /></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">户籍所在地：</td>
+          <td class="modify_td"><input name="textfield5" type="text" class="modify_in_1" id="textfield5" /></td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">移动电话：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">Email：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">家庭住址：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">家庭电话：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">有何特长：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">健康状况：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">拟申报专业：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">拟培训地点：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">同意变更地点：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">拟求职意向：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="52" align="right" class="modify_td">备注：</td>
+          <td class="modify_td">&nbsp;</td>
+        </tr>
+      </table>
+     <p align="center">
+     	<input type="button" class="btn_1" value="保存更新"/>
+        <input type="button" class="btn_1" value="取消更改"/>
+     </p>
+    </fieldset> </div>
+  </div>
+</div>
+</body>
+</html>

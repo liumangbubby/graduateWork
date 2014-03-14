@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="stu_enroll">
+	<typeAlias alias="stu_enroll" type="cn.gov.jyw.pojo.stu_enroll" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="StuEnrollResultMap" class="stu_enroll">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="nation" column="nation" />
+		<result property="pid" column="pid" />
+		<result property="gradute_g" column="gradute_g" />
+		<result property="gradute_y" column="gradute_y" />
+		<result property="gradute_d" column="gradute_d" />
+		<result property="education" column="education" />
+		<result property="specialty" column="specialty" />
+		<result property="healthy" column="healthy" />
+		<result property="politics" column="politics" />
+		<result property="birthday" column="birthday" />
+		<result property="address" column="address" />
+		<result property="household" column="household" />
+		<result property="tel" column="tel" />
+		<result property="email" column="email" />
+		<result property="home_address" column="home_address" />
+		<result property="home_tel" column="home_tel" />
+		<result property="specialty_submit" column="specialty_submit" />
+		<result property="intention" column="intention" />
+		<result property="remark" column="remark" />
+		<result property="class_no" column="class_no" />
+		<result property="create_time" column="create_time" />
+		<result property="stu_no" column="stu_no" />
+		<result property="join_state" column="join_state" />
+		<result property="edu_school" column="edu_school" />
+		<result property="skilled" column="skilled" />
+		<result property="place" column="place" />
+		<result property="change_place" column="change_place" />
+	</resultMap>
+
+	<!-- 查询记录总数 -->
+	<select id="SelectStuEnrollCount_1" resultClass="long"
+		parameterClass="HashMap">
+		select count(*)
+		from
+		stu_enroll
+		<dynamic prepend="where">
+			<isNotNull prepend="and"  property="school">
+				edu_school=#school#
+			</isNotNull>
+			<isNotNull prepend="or"  property="remark">
+				remark=#remark#
+			</isNotNull>
+			
+		</dynamic>
+	</select>
+	<!-- 查询某个班级学号最大值和记录总数 -->
+	<select id="SelectStuEnroll_5" parameterClass="String"
+		resultClass="HashMap">
+		SELECT MAX(stu_no) AS max,COUNT(*) AS count FROM
+		stu_enroll WHERE class_no = #class_no#
+	</select>
+
+	<select id="SelectStuEnroll_6" parameterClass="String"
+		resultClass="stu_enroll">
+		SELECT * FROM stu_enroll WHERE (stu_no IS NULL OR
+		stu_no='') AND class_no = #class_no#;
+	</select>
+
+	<!-- 根据条件查询记录总数 -->
+	<select id="SelectStuEnrollCount_2" resultClass="long"
+		parameterClass="HashMap">
+		select count(*) from
+		stu_enroll
+		<dynamic prepend="where">
+			<isNotNull property="name" prepend="and">
+				name=#name#
+			</isNotNull>
+			<isNotNull property="pid" prepend="and">
+				lower(pid)=lower(#pid#)
+			</isNotNull>
+			<isNotNull property="specialty_submit" prepend="and">
+				specialty_submit=#specialty_submit#
+			</isNotNull>
+			<isNotNull property="edu_school" prepend="and">
+				edu_school=#edu_school#
+			</isNotNull>
+			<isNotNull property="class_no" prepend="and">
+				class_no=#class_no#
+			</isNotNull>
+			<isNotNull property="join_state" prepend="and">
+				join_state=#join_state#
+			</isNotNull>
+			<isNotNull prepend="or"  property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 获得所有记录 -->
+	<select id="SelectStuEnrollAll" resultMap="StuEnrollResultMap"
+		parameterClass="HashMap">
+		select * from
+		stu_enroll
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="school">
+				edu_school=#school#
+			</isNotNull>
+			<isNotNull prepend="or" property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<!-- 查询身份证PID排重 -->
+	<select id="SelectStuEnroll_1" resultClass="java.lang.Integer"
+		parameterClass="java.lang.String">
+		SELECT COUNT(*) FROM (SELECT pid FROM stu_enroll UNION
+		ALL
+		SELECT pid FROM stu_record) AS s WHERE lower(s.pid)=lower(#pid#);
+	</select>
+
+	<!-- 无条件查询所有数据（已分页） -->
+	<select id="SelectStuEnroll_2" resultMap="StuEnrollResultMap"
+		parameterClass="HashMap">
+		select * from stu_enroll
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="school">
+				edu_school=#school#
+			</isNotNull>
+			<isNotNull prepend="or" property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by" close=" ">
+			<isEqual property="order" compareValue="1">
+				id asc
+			</isEqual>
+			<isEqual property="order" compareValue="2">
+				id desc
+			</isEqual>
+			<isEqual property="order" compareValue="3">
+				id asc,stu_no asc
+			</isEqual>
+			<isEqual property="order" compareValue="4">
+				id desc,stu_no asc
+			</isEqual>
+			<isEqual property="order" compareValue="5">
+				id asc,stu_no desc
+			</isEqual>
+			<isEqual property="order" compareValue="6">
+				id desc,stu_no desc
+			</isEqual>
+			<isEqual property="order" compareValue="7">
+				remark asc
+			</isEqual>
+			<isEqual property="order" compareValue="8">
+				remark desc
+			</isEqual>
+		</dynamic>
+		limit #start#,#limit#
+	</select>
+
+	<!-- 有条件查询所有数据（已分页） -->
+	<select id="SelectStuEnroll_3" resultMap="StuEnrollResultMap"
+		parameterClass="java.util.Map">
+		select * from stu_enroll
+		<dynamic prepend="where" close=" ">
+			<isNotNull property="name" prepend="and">
+				name=#name#
+			</isNotNull>
+			<isNotNull property="pid" prepend="and">
+				lower(pid)=lower(#pid#)
+			</isNotNull>
+			<isNotNull property="specialty_submit" prepend="and">
+				specialty_submit=#specialty_submit#
+			</isNotNull>
+			<isNotNull property="edu_school" prepend="and">
+				edu_school=#edu_school#
+			</isNotNull>
+			<isNotNull property="class_no" prepend="and">
+				class_no=#class_no#
+			</isNotNull>
+			<isNotNull property="join_state" prepend="and">
+				join_state=#join_state#
+			</isNotNull>
+			<isNotNull prepend="or" property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by" close=" ">
+			<isEqual property="order" compareValue="1">
+				id asc
+			</isEqual>
+			<isEqual property="order" compareValue="2">
+				id desc
+			</isEqual>
+			<isEqual property="order" compareValue="3">
+				class_no asc,stu_no
+				asc
+			</isEqual>
+			<isEqual property="order" compareValue="4">
+				class_no asc,stu_no
+				desc
+			</isEqual>
+			<isEqual property="order" compareValue="5">
+				class_no asc,stu_no
+				desc
+			</isEqual>
+			<isEqual property="order" compareValue="6">
+				class_no desc,stu_no
+				desc
+			</isEqual>
+			<isEqual property="order" compareValue="7">
+				remark asc
+			</isEqual>
+			<isEqual property="order" compareValue="8">
+				remark desc
+			</isEqual>
+		</dynamic>
+		limit #start#,#limit#;
+	</select>
+
+	<!-- 根据id查找用户 -->
+	<select id="SelectStuEnroll_4" resultMap="StuEnrollResultMap"
+		parameterClass="HashMap">
+		select * from stu_enroll where id=#id#
+		<dynamic>
+			<isNotNull prepend="and" property="school">
+				edu_school=#school#
+			</isNotNull>
+			<isNotNull prepend="or" property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+	<!-- 插入数据 -->
+	<insert id="InsertStuEnroll" parameterClass="cn.gov.jyw.pojo.stu_enroll">
+		INSERT INTO
+		stu_enroll(name,sex,nation,pid,gradute_g,gradute_y,gradute_d,education,specialty,
+		healthy,politics,birthday,address,household,tel,email,home_address,home_tel,specialty_submit,intention,edu_school,skilled,place,change_place,remark)
+		VALUES(#name#,#sex#,#nation#,#pid#,#gradute_g#,#gradute_y#,#gradute_d#,#education#,#specialty#,
+		#healthy#,#politics#,#birthday#,#address#,#household#,#tel#,#email#,#home_address#,#home_tel#,#specialty_submit#,#intention#,#edu_school#,#skilled#,#place#,#change_place#,#remark#);
+	</insert>
+
+	<!-- 删除数据 -->
+	<delete id="DeleteStuEnroll" parameterClass="java.util.List">
+		delete from stu_enroll where id in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+
+	<delete id="deleteStuEnrollAll">
+		delete from stu_enroll;
+	</delete>
+	<!-- 按照班级删除数据 -->
+	<delete id="DeleteStuEnrollByClass" parameterClass="String">
+		delete from
+		stu_enroll where class_no=#class_no#
+	</delete>
+
+	<!-- 更新数据 -->
+	<update id="UpdateStuEnroll" parameterClass="cn.gov.jyw.pojo.stu_enroll">
+		update stu_enroll
+		set
+		name=#name#,sex=#sex#,nation=#nation#,pid=#pid#,gradute_g=#gradute_g#
+		,gradute_y=#gradute_y#,gradute_d=#gradute_d#,education=#education#,specialty=#specialty#,
+		healthy=#healthy#,politics=#politics#,birthday=#birthday#,address=#address#,household=#household#,
+		tel=#tel#,email=#email#,home_address=#home_address#,home_tel=#home_tel#,specialty_submit=#specialty_submit#,
+		intention=#intention#,remark=#remark#,class_no=#class_no#,create_time=#create_time#,stu_no=#stu_no#,
+		join_state=#join_state#,edu_school=#edu_school#,skilled=#skilled#,place=#place#,change_place=#change_place#
+		where id=#id#
+		<dynamic>
+			<isNotNull prepend="and" property="edu_school">
+				edu_school=#edu_school#
+			</isNotNull>
+		</dynamic>
+	</update>
+	<!-- 批量修改数据 -->
+	<update id="UpdateStuEnrollBacth" parameterClass="HashMap">
+		UPDATE stu_enroll
+		<dynamic prepend="SET" close=" ">
+			<isNotNull property="join_state" prepend=",">
+				join_state=(SELECT state FROM join_state WHERE id=#join_state#)
+			</isNotNull>
+			<isNotNull property="specialty_submit" prepend=",">
+				specialty_submit=(SELECT name FROM specialty_report WHERE
+				id=#specialty_submit#)
+			</isNotNull>
+			<isNotNull property="class_no" prepend=",">
+				class_no=(SELECT
+				name FROM class_info WHERE id=#class_no#)
+			</isNotNull>
+			<isNotNull property="edu_school" prepend=",">
+				edu_school=(SELECT school FROM edu_school WHERE id=#edu_school#)
+			</isNotNull>
+		</dynamic>
+		WHERE id=#id#
+	</update>
+	<select id="SelectStuEnrollByPid" parameterClass="HashMap"
+		resultClass="stu_enroll">
+		select * from stu_enroll where lower(pid)=lower(#pid#)
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="edu_school">
+				edu_school=#edu_school#
+			</isNotNull>
+			<isNotNull prepend="or" property="remark">
+				remark=#remark#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<update id="UpdateStuEnrollClassNo" parameterClass="java.util.HashMap">
+		update
+		stu_enroll set class_no=#class_no#
+		where lower(pid) in
+		<iterate open="(" close=")" conjunction="," property="pid">
+			lower(#pid[]#)
+		</iterate>
+	</update>
+	<select id="SelectEnrollByClassNo" parameterClass="String"
+		resultClass="long">
+		SELECT id FROM stu_enroll WHERE class_no=#class_no#;
+	</select>
+	<update id="UpdateEnrollStuNo" parameterClass="HashMap">
+		UPDATE stu_enroll
+		SET stu_no=#stu_no# WHERE id=#id#;
+	</update>
+	<select id="SelectEnrollSpec" parameterClass="String"
+		resultClass="cn.gov.jyw.pojo.specialty_report">
+		SELECT * FROM specialty_report WHERE NAME IN
+		(SELECT
+		DISTINCT specialty_submit FROM stu_enroll WHERE edu_school=#school#);
+	</select>
+	<select id="SelectEnrollClass" parameterClass="HashMap"
+		resultClass="cn.gov.jyw.pojo.class_info">
+		SELECT i.* FROM class_info i, (SELECT DISTINCT class_no FROM
+		stu_enroll WHERE class_no IS NOT NULL AND class_no!='' AND
+		edu_school=#school#
+		<dynamic>
+			<isNotNull prepend="AND" property="type">
+				specialty_submit=#type#
+			</isNotNull>
+		</dynamic>
+		) t WHERE i.name=t.class_no;
+	</select>
+	<select id="SelectStuEnroll_7" parameterClass="HashMap"
+		resultClass="cn.gov.jyw.pojo.stu_enroll">
+
+		SELECT * FROM stu_enroll WHERE class_no=#class_no#
+		<dynamic>
+			<isNotNull prepend="AND" property="edu_school">
+				edu_school=#edu_school#
+			</isNotNull>
+		</dynamic>
+		 order by stu_no
+	</select>
+</sqlMap>

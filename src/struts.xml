@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="enroll" namespace="/jsp" extends="struts-default">
+		<action name="SchoolEnrollAction" class="SchoolEnrollAction">
+			<result name="success">/jsp/enroll/success.jsp</result>
+			<result name="download">/jsp/enroll/download.jsp</result>
+		</action>
+
+		<action name="StuEnrollAction" class="StuEnrollAction">
+			<result name="success">/jsp/enroll/stuenroll.jsp</result>
+			<result name="enroll_success">/jsp/enroll/stuenroll_result.jsp</result>
+			<result name="print">/jsp/enroll/stuenroll_print.jsp</result>
+			<result name="pdf">/jsp/enroll/pdf.jsp</result>
+			<result name="exp_success">/jsp/backyard/enroll_export.jsp</result>
+		</action>
+	</package>
+	<package name="backyard" namespace="/jsp" extends="struts-default">
+		<global-results>
+			<result name="error" type='redirect'>/jsp/500.jsp</result>
+		</global-results>
+		<action name="LoginAction" class="LoginAction">
+			<result name="success">/jsp/backyard/index.jsp</result>
+			<result name="fail">/jsp/backyard/login_fail.jsp</result>
+			<result name='out'>/jsp/backyard/login.jsp</result>
+		</action>
+		<action name="ManageAction" class="ManageAction">
+			<result name="success">/jsp/backyard/index.jsp</result>
+			<result name="modify">/jsp/backyard/modify.jsp</result>
+		</action>
+		<action name="SpecialtyReporAction" class="SpecialtyReporAction">
+			<result name="success">/jsp/backyard/specialty_report.jsp</result>
+
+		</action>
+		<action name="JoinStateAction" class="JoinStateAction">
+			<result name="success">/jsp/backyard/join_state.jsp</result>
+		</action>
+		<action name="ClassInfoAction" class="ClassInfoAction">
+			<result name="success">/jsp/backyard/class_info.jsp</result>
+		</action>
+		<action name='EduSchoolAction' class='EduSchoolAction'>
+			<result name="success">/jsp/backyard/edu_school.jsp</result>
+			<result name="ref">/jsp/backyard/ref.jsp</result>
+		</action>
+		<action name="UserAction" class="UserAction">
+			<result name="success">/jsp/backyard/user.jsp</result>
+		</action>
+		<action name="YearAction" class="YearAction">
+			<result name="success">/jsp/backyard/year.jsp</result>
+		</action>
+		<action name="SystemAction" class="SystemAction">
+			<result name="success">/jsp/backyard/system.jsp</result>
+		</action>
+		<action name="StuRecordAction" class="StuRecordAction">
+			<result name="success">/jsp/backyard/import_success.jsp</result>
+			<result name="fail">/jsp/backyard/import_fail.jsp</result>
+			<result name="index">/jsp/backyard/record.jsp</result>
+			<result name="modify">/jsp/backyard/record_modify.jsp</result>
+			<result name="exp_success">/jsp/backyard/record_export.jsp</result>
+		</action>
+		<action name="PlaceAction" class="PlaceAction">
+			<result name="index">/jsp/backyard/place.jsp</result>
+		</action>
+		<action name="ScheduleAction" class="ScheduleAction">
+			<result name="index">/jsp/backyard/schedule_list.jsp</result>
+			<result name="classSchedule">/jsp/backyard/classSchedule.jsp</result>
+			<result name="scheduleOne">/jsp/backyard/scheduleOne.jsp</result>
+			
+		</action>
+		<action name="StopAction" class="StopAction">
+			<result name="index">/jsp/backyard/stop.jsp</result>
+			<result name="chartClass">/jsp/backyard/chartClass.jsp</result>
+			<result name="chartSchool">/jsp/backyard/chartSchool.jsp</result>
+			<result name="chartAll">/jsp/backyard/chartAll.jsp</result>
+		</action>
+	</package>
+</struts>

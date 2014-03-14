@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="year">
+	<typeAlias alias="year" type="cn.gov.jyw.pojo.year" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="yearMap" class="year">
+		<result property="id" column="id" />
+		<result property="year" column="year" />
+		<result property="active" column="active" />
+	</resultMap>
+	<select id="SelectYearAll" resultMap="yearMap">
+		select * from year order by year;
+	</select>
+	
+	<delete id="DeleteYear" parameterClass="java.util.List">
+		delete from year
+		where id in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+	<insert id="InsertYear" parameterClass="year">
+		insert into
+		year(year,active)
+		values(#year#,#active#);
+	</insert>
+	<update id="ActiveYear" parameterClass="int">
+		update year set
+		active=true where id=#id#;
+	</update>
+	<update id="UnActiveYear">
+		update year set active=false ;
+	</update>
+</sqlMap>
+	

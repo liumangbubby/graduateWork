@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="edu_school">
+	<typeAlias alias="edu_school" type="cn.gov.jyw.pojo.edu_school" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="EduSchoolMap" class="edu_school">
+		<result property="id" column="id" />
+		<result property="school" column="school" />
+	</resultMap>
+	<select id="SelectEduSchoolAll" resultMap="EduSchoolMap">
+		select * from
+		edu_school;
+	</select>
+	<select id='SelectEduAll' resultClass='HashMap'>
+		SELECT s.id,s.school,r.num FROM
+		edu_school s LEFT JOIN remark r ON
+		s.school=r.school;
+	</select>
+	<!-- 根据专业编号查询对应的学校 -->
+	<select id="SelectRefEdu" parameterClass="int" resultClass="edu_school">
+		SELECT * FROM edu_school WHERE id IN (SELECT r.school FROM
+		specialty_report s,ref r WHERE s.name=r.spec AND s.id=#id#)
+	</select>
+	<!-- 根据专业名称查询对应的学校 -->
+	<select id="SelectRefEduBySpec" parameterClass="String"
+		resultClass="edu_school">
+		SELECT * FROM edu_school WHERE id IN (SELECT r.school FROM
+		specialty_report s,ref r WHERE s.name=r.spec AND s.name=#name#)
+	</select>
+	<select id="SelectSpecBySchool" parameterClass="String"
+		resultClass="String">
+		SELECT spec FROM ref r,edu_school e WHERE r.school=e.id
+		AND e.school=#school#;
+	</select>
+	<delete id="DeleteEduSchool" parameterClass="java.util.List">
+		delete from edu_school
+		where id in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+	<insert id="InsertEduSchool" parameterClass="edu_school">
+		insert into
+		edu_school(school) values(#school#);
+	</insert>
+</sqlMap>

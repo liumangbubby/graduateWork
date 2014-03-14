@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ref">
+	<typeAlias alias="ref" type="cn.gov.jyw.pojo.ref" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<insert id="InsertRef" parameterClass="ref">
+		insert into ref
+		(school,spec) values(#school#,#spec#);
+	</insert>
+	<select id="SelectRefBySchool" parameterClass="String" resultClass="ref">
+		select * from ref where school=#school#;
+	</select>
+	<delete id="DeleteRefBySchool" parameterClass="String" >
+		delete from ref where school=#school#;
+	</delete>
+	<delete id="DeleteRef" parameterClass="java.util.List">
+		delete from ref
+		where school in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+	<delete id="DeleteRefBySpec" parameterClass="java.util.List">
+		DELETE FROM ref WHERE spec IN (SELECT name FROM specialty_report WHERE id IN 
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+		 )
+	</delete>
+</sqlMap>

@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../../css/backyard.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.6.4.js"></script>
+<script src="../../js/backyard.js">
+</script>
+</head>
+
+<body class="body">
+<div>
+  <table width="100%" height="60" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="9%">LOGO</td>
+      <td width="41%">系统名称</td>
+      <td width="25%">欢迎词</td>
+      <td width="25%">退出登陆</td>
+    </tr>
+  </table>
+</div>
+<div class="main_div">
+  <div class="left_div">
+    <div class="left-tag">报名信息</div>
+    <div class="left-tag">历史数据</div>
+    <div class="left-tag">申报专业</div>
+    <div class="left-tag">参与状态</div>
+  </div>
+  <div class="right_div">
+    <fieldset class="set" onmouseover="inSearch()" onmouseout="outSearch()">
+      <legend class="leg">检索条件</legend>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="search_table">
+        <tr>
+          <td width="9%" height="39" align="center">学生姓名：</td>
+          <td width="23%">
+          <input name="textfield" type="text" class="input" id="textfield" /></td>
+          <td width="10%" align="center">身份证号：</td>
+          <td width="23%"><input name="textfield3" type="text" class="input" id="textfield3" /></td>
+          <td width="11%" align="center">申报专业：</td>
+          <td width="24%"><select name="select2" class="select" id="select2">
+            <option>- 选择 -</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td height="45" align="center">培训机构：</td>
+          <td><input name="textfield2" type="text" class="input" id="textfield2" /></td>
+          <td align="center">班级编号：</td>
+          <td><input name="textfield4" type="text" class="input" id="textfield4" /></td>
+          <td align="center">参与状态：</td>
+          <td>
+            <select name="select" class="select" id="select">
+              <option>- 选择 -</option>
+          </select></td>
+        </tr>
+      </table>
+    </fieldset>
+   <table width="1050" border="0" cellpadding="0" cellspacing="0" class="info_table">
+  <tr>
+    <td width="89" height="30" id="daxuhao" align="center" class="cell cell_title" onclick="orderDaXuHao()" style="cursor:pointer">大序号</td>
+    <td width="95" align="center" class="cell cell_title">参与状态</td>
+    <td width="140" align="center" class="cell cell_title">培训机构</td>
+    <td width="86" align="center" class="cell cell_title">班级编号</td>
+    <td width="75" align="center" id='xiaoxuhao' class="cell cell_title" onclick="orderXiaoXuHao()" style="cursor:pointer">小序号</td>
+    <td width="124" align="center" class="cell cell_title">姓名</td>
+    <td width="152" align="center" class="cell cell_title">身份证号</td>
+    <td width="143" align="center" class="cell cell_title">电话</td>
+    <td width="144" align="center" class="cell cell_title">申报专业</td>
+  </tr>
+<tr>
+    <td height="30" align="center" class="cell ">1</td>
+    <td align="center" class="cell">参与</td>
+    <td align="center" class="cell">大连华信</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">210104198205254319</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" align="center" class="cell">2</td>
+    <td align="center" class="cell">暂停</td>
+    <td align="center" class="cell">中软国际</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" align="center" class="cell">3</td>
+    <td align="center" class="cell">参与</td>
+    <td align="center" class="cell">大连华信</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" align="center" class="cell">4</td>
+    <td align="center" class="cell">参与</td>
+    <td align="center" class="cell">中软国际</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" align="center" class="cell">5</td>
+    <td align="center" class="cell">参与</td>
+    <td align="center" class="cell">中软国际</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+    <tr>
+    <td height="30" align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td align="center" class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+    <td class="cell">&nbsp;</td>
+  </tr>
+  
+</table>
+  <diV>
+  <table width="100%" height="50" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="27%"><input name="button" type="submit" class="op_btn" id="button" value="全选" />
+      <input name="button2" type="submit" class="op_btn" id="button2" value="删除" />
+      <input name="button3" type="submit" class="op_btn" id="button3" value="修改" />
+      <input name="button4" type="submit" class="op_btn" id="button4" value="批量" /></td>
+    <td width="49%"><input name="button5" type="submit" class="page_btn" id="button5" value="首页" />
+      <input name="button11" type="submit" class="page_btn" id="button11" value="上一页" />
+<input name="button6" type="submit" class="page_btn" id="button6" value="1" />
+      <input name="button7" type="submit" class="page_btn" id="button7" value="2" />
+      <input name="button8" type="submit" class="page_btn_now" id="button8" value="3" />
+      <input name="button9" type="submit" class="page_btn" id="button9" value="4" />
+      <input name="button10" type="submit" class="page_btn" id="button10" value="5" />
+      <input name="button12" type="submit" class="page_btn" id="button12" value="下一页" />
+      <input name="button13" type="submit" class="page_btn" id="button13" value="尾页" /></td>
+    <td width="24%" class="go">跳转
+      <label for="textfield5"></label>
+      <input name="toPage" type="text" class="page_in" id="toPage" />
+      /105页</td>
+  </tr>
+</table>
+  <p>&nbsp;</p>
+
+  </diV>
+
+  </div>
+</div>
+</body>
+</html>

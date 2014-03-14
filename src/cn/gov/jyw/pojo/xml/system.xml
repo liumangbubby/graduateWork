@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="system">
+	<typeAlias alias="system" type="cn.gov.jyw.pojo.system" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	
+	<resultMap id="SystemMap" class="system">
+		<result property="id" column="id" />
+		<result property="setting" column="setting" />
+		<result property="value" column="value" />
+	</resultMap>
+	
+	<select id="SelectIsOpenEnroll" resultClass="java.lang.String">
+		select value from system where setting='isOpenEnroll';
+	</select>
+	<select id="SelectYearEnroll" resultClass="java.lang.String">
+		select value from system where setting='yearEnroll';
+	</select>
+	
+	<update id="UpdateYearEnroll" parameterClass="java.lang.String">
+		update system set value=#value# where setting='yearEnroll';
+	</update>
+	<update id="UpdateOpenEnroll" parameterClass="java.lang.String">
+		update system set value=#value# where setting='isOpenEnroll';
+	</update>
+	
+
+
+</sqlMap>

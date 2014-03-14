@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="stop">
+	<typeAlias alias="stop" type="cn.gov.jyw.pojo.stop" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<select id="SelectStop_1" parameterClass="HashMap" resultClass="cn.gov.jyw.pojo.stop">
+		SELECT * FROM STOP
+		<dynamic prepend="WHERE">
+			<isNotNull property="school" prepend="AND">
+				school=#school#
+			</isNotNull>
+			<isNotNull property="class_no" prepend="AND">
+				class_no=#class_no#
+			</isNotNull>
+			<isNotNull property="name" prepend="AND">
+				name=#name#
+			</isNotNull>
+			<isNotNull property="pid" prepend="AND">
+				pid=#pid#
+			</isNotNull>
+			<isNotNull property="year" prepend="AND">
+				YEAR(join_date)=#year#
+			</isNotNull>
+		</dynamic>
+		order by id
+	</select>
+	<select id="SelectStop_2" resultClass="String">
+		SELECT DISTINCT school
+		FROM STOP;
+	</select>
+	<select id="SelectStop_3" resultClass="String" parameterClass="HashMap">
+		SELECT DISTINCT class_no FROM STOP
+		<dynamic prepend="WHERE">
+			<isNotNull property="school">
+				school=#school#
+			</isNotNull>
+		</dynamic>
+		ORDER BY class_no;
+	</select>
+	<delete id="DeleteStop_1">
+		DELETE FROM stop WHERE id IN
+		<iterate open="(" close=")" conjunction=",">
+			#[]#
+		</iterate>
+	</delete>
+	<insert id="InsertStop" parameterClass="HashMap">
+		INSERT INTO
+		stop(class_no,school,NAME,pid,tel,join_date,stop_date,days,reason,remark,number,stu_no)
+		VALUES(#class_no#,#school#,#name#,#pid#,#tel#,#join_date#,#stop_date#,#days#,#reason#,#remark#,#number#,(
+		SELECT stu_no FROM stu_enroll WHERE pid=#pid# UNION SELECT stu_no FROM
+		stu_record WHERE pid=#pid#))
+	</insert>
+	<select id="SelectStop_4" parameterClass="String" resultClass="HashMap">
+	<![CDATA[ 
+		SELECT num,(SELECT COUNT(*) FROM STOP WHERE days<30 AND class_no=#classNo#) AS ss
+		FROM class_info WHERE NAME=#classNo#;
+	]]>
+	</select>
+
+	<select id="SelectStop_5" parameterClass="HashMap" resultClass="long">
+	<![CDATA[ 
+		SELECT COUNT(*) FROM STOP WHERE YEAR(join_date)=#year# AND
+		school=#school#;
+		]]>
+	</select>
+	<select id="SelectStop_6" parameterClass="HashMap" resultClass="long">
+		SELECT
+		COUNT(*) +(SELECT
+		COUNT(*)
+		FROM
+		stu_record
+		WHERE class_no IS NOT
+		NULL AND YEAR = #year#
+		AND edu_school=#school#) AS ccc
+		FROM
+		stu_enroll
+		WHERE class_no IS NOT NULL AND YEAR(create_time) = #year#
+		AND
+		edu_school=#school#;
+	</select>
+	<!-- 全省中退总人数 -->
+	<select id="SelectStop_7" parameterClass="int" resultClass="long">
+		SELECT COUNT(*) FROM STOP WHERE YEAR(join_date)=#year#;
+	</select>
+	<!-- 全省中退少于30天的总人数 -->
+	<select id="SelectStop_8" parameterClass="int" resultClass="long">
+	<![CDATA[ 
+		SELECT COUNT(*) FROM STOP WHERE days<30 AND
+		YEAR(join_date)=#year#;
+		]]>
+	</select>
+	<!-- 全省各家学校开班总人数 -->
+	<select id="SelectStop_9" parameterClass="int" resultClass="long">
+		SELECT
+		COUNT(*) +
+		(SELECT
+		COUNT(*)
+		FROM
+		stu_record
+		WHERE class_no IS NOT
+		NULL AND YEAR = #year#) AS ccc
+		FROM
+		stu_enroll
+		WHERE class_no IS NOT NULL
+		AND YEAR(create_time) = #year#;
+	</select>
+
+</sqlMap>
+	

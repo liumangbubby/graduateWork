@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<sqlMap resource="cn/gov/jyw/pojo/xml/nation.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/politics.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/specialty.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/stu_enroll.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/user.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/specialty_report.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/join_state.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/year.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/edu_school.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/class_info.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/system.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/stu_record.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/place.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/ref.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/schedule.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/stop.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/remark.xml" />
+</sqlMapConfig>

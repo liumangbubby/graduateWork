@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="remark">
+	<typeAlias alias="remark" type="cn.gov.jyw.pojo.remark" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<select id="SelectRemark_1" resultClass="String" parameterClass="String">
+		SELECT num FROM remark WHERE school=#school#;
+	</select>
+	
+	<update id="UpdateRemark_1" parameterClass='HashMap'>
+		update remark set num=#num# where school=#school#
+	</update>
+	<insert id="InsertRemark" parameterClass='HashMap'>
+		insert into remark values(#num#,#school#)
+	</insert>
+	<delete id="DeleteRemark" parameterClass='int'>
+		DELETE FROM remark WHERE school=(SELECT school FROM edu_school WHERE id=#id#);
+	</delete>
+</sqlMap>

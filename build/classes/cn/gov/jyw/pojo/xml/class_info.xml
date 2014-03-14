@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="class_info">
+	<typeAlias alias="class_info" type="cn.gov.jyw.pojo.class_info" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<resultMap id="ClassInfoMap" class="class_info">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<result property="school" column="school" />
+		<result property="num" column="num" />
+		<result property="archives" column="archives" />
+	</resultMap>
+	<select id="SelectClassInfoAll" resultMap="ClassInfoMap"
+		parameterClass="java.util.Map">
+		select * from
+		class_info where 1=1
+		<dynamic>
+			<isEqual property="archives" prepend="and" compareValue="true">
+				archives=true
+			</isEqual>
+			<isEqual property="archives" prepend="and" compareValue="false">
+				archives=false
+			</isEqual>
+		</dynamic>
+	</select>
+
+	<select id="SelectClassInfo" resultMap="ClassInfoMap" parameterClass="java.util.Map">
+		select * from class_info
+		<dynamic prepend="where">
+			<isNotNull property="name" prepend="and">
+				name=#name#
+			</isNotNull>
+			<isNotNull property="type" prepend="and">
+				type=#type#
+			</isNotNull>
+			<isNotNull property="school" prepend="and">
+				school=#school#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="SelectRefClass" parameterClass="java.util.Map"
+		resultClass="java.util.HashMap">
+		SELECT name,id FROM
+		class_info WHERE
+		TYPE=(SELECT
+		NAME FROM
+		specialty_report WHERE
+		id=#typeId#) AND
+		school=(SELECT school FROM
+		edu_school WHERE
+		id=#eduId#)
+		<dynamic>
+			<isEqual property="archives" prepend="and" compareValue="true">
+				archives=true
+			</isEqual>
+			<isEqual property="archives" prepend="and" compareValue="false">
+				archives=false
+			</isEqual>
+		</dynamic>
+	</select>
+
+
+	<!-- 某个班级是否存在 -->
+	<select id="HasClassInfo" parameterClass="java.lang.String"
+		resultClass="int">
+		select count(*) from class_info where name=#name#
+	</select>
+
+	<insert id="InsertClassInfo" parameterClass="class_info">
+		insert
+		class_info(name,type,school) values(#name#,#type#,#school#);
+	</insert>
+	<delete id="DeleteClassInfo" parameterClass="java.util.List">
+		delete from
+		class_info where id in
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+	</delete>
+
+	<delete id="DeleteClass" parameterClass="java.util.List">
+		DELETE FROM class_info WHERE school IN (SELECT school FROM edu_school
+		WHERE id IN
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+		)
+	</delete>
+	<delete id="DeleteClassByType" parameterClass="java.util.List">
+		DELETE FROM class_info WHERE TYPE IN (SELECT name FROM
+		specialty_report WHERE id IN
+		<iterate open="(" close=")" conjunction=",">
+			#value[]#
+		</iterate>
+		)
+	</delete>
+
+
+	<update id="UpdateClassNum" parameterClass="java.lang.String">
+		UPDATE class_info SET
+		num=(SELECT COUNT(*) FROM stu_enroll WHERE class_no=#class_no# ) WHERE
+		NAME=#class_no#
+	</update>
+	<update id="UpdateClassInfoArchives" parameterClass="boolean">
+		update
+		class_info set archives=#archives#
+	</update>
+	<update id="UpdateClassInfoArchivesByClass" parameterClass="java.util.HashMap">
+		update
+		class_info set archives=#archives#
+		where name=#name#
+	</update>
+
+	<!-- 更新班级人数（归档记录） -->
+	<update id="UpdateClassInfoNum_1">
+		UPDATE class_info c,(SELECT class_no cn,COUNT(*) co
+		FROM stu_record GROUP BY class_no) s SET c.num=s.co WHERE c.name=s.cn;
+	</update>
+	<update id="UpdateClassInfoNum_2" parameterClass="java.util.HashMap">
+		update
+		class_info set num=#num# where name=#name#;
+	</update>
+	<select id="SelectClassById" parameterClass="int" resultClass="class_info">
+		SELECT * FROM class_info WHERE id=#id#;
+	</select>
+	<select id="SelectClassMax" parameterClass="String" resultClass="class_info">
+		SELECT * FROM class_info WHERE TYPE=#type# ORDER BY NAME DESC LIMIT 0,1;
+	</select>
+</sqlMap>
