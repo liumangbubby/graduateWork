@@ -7,7 +7,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href = "/stuenroll/jsp/backyard/login.jsp";
+		location.href = "/stuenroll/jsp/backyard/login_1.jsp";
 	</script>
 </body>
 </html>

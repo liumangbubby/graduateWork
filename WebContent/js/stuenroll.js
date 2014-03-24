@@ -10,11 +10,12 @@ $(document)
 										rs = checkName() & checkSex()
 												& checkNation() & checkPid()
 												& checkGraduteG()
-												& checkGraduteY()
+											//	& checkGraduteY()
+												& checkBirt()
 												& checkDatepicker()
 												& checkEducation()
-												& checkSpecialty()
-												& checkPolitics()
+											//	& checkSpecialty()
+											//	& checkPolitics()
 												& checkBirthday()
 												& checkAddress()
 												& checkHousehold() & checkTel()
@@ -218,10 +219,10 @@ function checkHomeTel() {
 function blurAll() {
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -233,6 +234,7 @@ function blurAll() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 
 function clickNation() {
@@ -240,10 +242,10 @@ function clickNation() {
 	document.getElementById("nation").style.display = "inline";
 	// 下拉列表取消
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -255,6 +257,7 @@ function clickNation() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 
 }
 function blurNation() {
@@ -268,13 +271,13 @@ function clickAddress() {
 	document.getElementById("addr").innerHTML = "";
 	document.getElementById("address").style.display = "inline";
 	document.getElementById("address").focus();
-	document.getElementById("address").setSelectionRange(100, 100);
+//	document.getElementById("address").setSelectionRange(100, 100);
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -285,6 +288,7 @@ function clickAddress() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurAddress() {
 	document.getElementById("address").style.display = "none";
@@ -296,13 +300,13 @@ function clickHousehold() {
 	document.getElementById("hous").innerHTML = "";
 	document.getElementById("household").style.display = "inline";
 	document.getElementById("household").focus();
-	document.getElementById("household").setSelectionRange(100, 100);
+//	document.getElementById("household").setSelectionRange(100, 100);
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -313,6 +317,7 @@ function clickHousehold() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurHousehold() {
 	document.getElementById("household").style.display = "none";
@@ -324,13 +329,13 @@ function clickGraduteG() {
 	document.getElementById("grad").style.display = "none";
 	document.getElementById("graduteG").style.display = "inline";
 	document.getElementById("graduteG").focus();
-	document.getElementById("graduteG").setSelectionRange(100, 100);
+//	document.getElementById("graduteG").setSelectionRange(100, 100);
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -340,6 +345,7 @@ function clickGraduteG() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurGraduteG() {
 	document.getElementById("graduteG").style.display = "none";
@@ -355,10 +361,10 @@ function clickHomeAddress() {
 	document.getElementById("homeAddress").setSelectionRange(100, 100);
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -369,6 +375,7 @@ function clickHomeAddress() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurHomeAddress() {
 	document.getElementById("homeAddress").style.display = "none";
@@ -381,10 +388,10 @@ function clickSex() {
 	document.getElementById("sx").style.display = "none";
 	// 下拉列表取消
 	blurNation();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -396,6 +403,7 @@ function clickSex() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurSex() {
 	document.getElementById("sx").innerHTML = document.getElementById("sex").value;
@@ -412,8 +420,8 @@ function clickGraduteY() {
 	blurNation();
 	blurSex();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -425,22 +433,18 @@ function clickGraduteY() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
-function blurGraduteY() {
-	document.getElementById("gradY").innerHTML = document
-			.getElementById("graduteY").value;
-	document.getElementById("graduteY").style.display = "none";
-	document.getElementById("gradY").style.display = "inline";
-}
+
 function clickEducation() {
 	document.getElementById("education").style.display = "inline";
 	document.getElementById("edu").style.display = "none";
 	// 下拉列表取消
-	blurGraduteY();
+	//blurGraduteY();
 	blurNation();
 	blurSex();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -452,6 +456,7 @@ function clickEducation() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurEducation() {
 	document.getElementById("edu").innerHTML = document
@@ -460,13 +465,13 @@ function blurEducation() {
 	document.getElementById("edu").style.display = "inline";
 
 }
-function clickSpecialty() {
+/*function clickSpecialty() {
 	document.getElementById("specialty").style.display = "inline";
 	document.getElementById("spec").style.display = "none";
 	// 下拉列表取消
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
 	blurPolitics();
 	blurGraduteD();
@@ -480,24 +485,24 @@ function clickSpecialty() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
-}
-function blurSpecialty() {
+}*/
+/*function blurSpecialty() {
 	document.getElementById("spec").innerHTML = document
 			.getElementById("specialty").value;
 	document.getElementById("specialty").style.display = "none";
 	document.getElementById("spec").style.display = "inline";
 
-}
-function clickPolitics() {
+}*/
+/*function clickPolitics() {
 
 	document.getElementById("politics").style.display = "inline";
 	document.getElementById("poli").style.display = "none";
 	// 下拉列表取消
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
+	//blurSpecialty();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -509,7 +514,7 @@ function clickPolitics() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
-}
+}*/
 
 function clickSpecr() {
 
@@ -519,9 +524,9 @@ function clickSpecr() {
 	// 下拉列表取消
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
+	//blurSpecialty();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -532,13 +537,14 @@ function clickSpecr() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
-function blurPolitics() {
+/*function blurPolitics() {
 	document.getElementById("poli").innerHTML = document
 			.getElementById("politics").value;
 	document.getElementById("politics").style.display = "none";
 	document.getElementById("poli").style.display = "inline";
-}
+}*/
 
 function blurSpecr() {
 	document.getElementById("specr").innerHTML = document
@@ -553,10 +559,33 @@ function clickGraduteD() {
 	// 下拉列表消失
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
+	blurBirthday();
+	blurPlace();
+	blurSpecr();
+	blurAddress();
+	blurHousehold();
+	blurHomeAddress();
+	blurGraduteG();
+	blurHealthy();
+	//blurSchool();
+	blurEmail();
+	blurBirt();
+}
+function clickBirt() {
+	//alert("da");
+	document.getElementById("birt").style.display = "inline";
+	document.getElementById("birtT").style.display = "none";
+	// 下拉列表消失
+	blurNation();
+	blurSex();
+	//blurGraduteY();
+	blurEducation();
+	//blurSpecialty();
+	//blurPolitics();
 	blurBirthday();
 	blurPlace();
 	blurSpecr();
@@ -580,16 +609,22 @@ function blurGraduteD() {
 	document.getElementById("da").style.display = "none";
 	document.getElementById("gradT").style.display = "inline";
 }
+function blurBirt(){
+	document.getElementById("birtT").innerHTML = document
+			.getElementById("birthday").value;
+	document.getElementById("birt").style.display = "none";
+	document.getElementById("birtT").style.display = "inline";
+}
 function clickBirthday() {
 	document.getElementById("br").style.display = "inline";
 	document.getElementById("birt").style.display = "none";
 	// 下拉列表消失
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurPlace();
 	blurSpecr();
@@ -600,6 +635,7 @@ function clickBirthday() {
 	blurHealthy();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurBirthday() {
 	// document.getElementById("birt").innerHTML =
@@ -614,10 +650,10 @@ function clickEmail(){
 	// 下拉列表消失
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -628,6 +664,7 @@ function clickEmail(){
 	blurGraduteG();
 	blurHealthy();
 	//blurSchool();
+	blurBirt();
 }
 function blurEmail() {
 	 document.getElementById("eml").innerHTML = document.getElementById("email").value;
@@ -707,10 +744,10 @@ function clickPlace() {
 	// 下拉列表取消
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurSpecr();
@@ -718,6 +755,7 @@ function clickPlace() {
 	blurHousehold();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurPlace() {
 	document.getElementById("place").style.display = "none";
@@ -733,10 +771,10 @@ function clickHealthy() {
 	// 下拉列表取消
 	blurNation();
 	blurSex();
-	blurGraduteY();
+	//blurGraduteY();
 	blurEducation();
-	blurSpecialty();
-	blurPolitics();
+	//blurSpecialty();
+	//blurPolitics();
 	blurGraduteD();
 	blurBirthday();
 	blurPlace();
@@ -747,6 +785,7 @@ function clickHealthy() {
 	blurGraduteG();
 	//blurSchool();
 	blurEmail();
+	blurBirt();
 }
 function blurHealthy() {
 	document.getElementById("healthy").style.display = "none";
@@ -779,6 +818,7 @@ function checkNation() {
 		return false;
 	}
 }
+/*
 function checkGraduteY() {
 	var graduteY = document.getElementById("graduteY").value;
 
@@ -790,6 +830,7 @@ function checkGraduteY() {
 		return false;
 	}
 }
+*/
 function checkDatepicker() {
 	var datepicker = document.getElementById("datepicker").value;
 	if (datepicker != null && datepicker.length != 0) {
@@ -801,6 +842,17 @@ function checkDatepicker() {
 	}
 
 }
+function checkBirt(){
+	var exp = new RegExp("/d{4}-/d{2}-/d{2}");
+	var birt = document.getElementById("birthday").value;
+	if(exp.test(birt)){
+		document.getElementById("t18").style.backgroundColor = "#EEEEEE";
+		return true;
+	}else{
+		document.getElementById("t18").style.backgroundColor = "#FFC1E0";
+		return false;
+	}
+}
 function checkEducation() {
 	var education = document.getElementById("education").value;
 	if (education != null && education.length != 0) {
@@ -811,7 +863,7 @@ function checkEducation() {
 		return false;
 	}
 }
-function checkSpecialty() {
+/*function checkSpecialty() {
 	var specialty = document.getElementById("specialty").value;
 	if (specialty != null && specialty.length != 0) {
 		document.getElementById("t16").style.backgroundColor = "#EEEEEE";
@@ -820,8 +872,8 @@ function checkSpecialty() {
 		document.getElementById("t16").style.backgroundColor = "#FFC1E0";
 		return false;
 	}
-}
-function checkPolitics() {
+}*/
+/*function checkPolitics() {
 	var politics = document.getElementById("politics").value;
 
 	if (politics != null && politics.length != 0) {
@@ -831,7 +883,7 @@ function checkPolitics() {
 		document.getElementById("t17").style.backgroundColor = "#FFC1E0";
 		return false;
 	}
-}
+}*/
 
 function checkSpecr() {
 	var politics = document.getElementById("specialtySubmit").value;

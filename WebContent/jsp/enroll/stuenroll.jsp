@@ -31,7 +31,16 @@ $(document).ready(
 				{'days' : [ '周日', '周一', '周二', '周三', '周四','周五', '周六' ],
 				 'months' : [ '1月', '2月', '3月', '4月', '5月','6月', '7月', '8月', '9月', '10月','11月', '12月' ]
 			});
+			$('#birthday').Zebra_DatePicker(
+					{'days' : [ '周日', '周一', '周二', '周三', '周四','周五', '周六' ],
+				     'months' : [ '1月', '2月', '3月', '4月', '5月','6月', '7月', '8月', '9月', '10月','11月', '12月' ]
+					});
+					$('#bi').Zebra_DatePicker(
+						{'days' : [ '周日', '周一', '周二', '周三', '周四','周五', '周六' ],
+						 'months' : [ '1月', '2月', '3月', '4月', '5月','6月', '7月', '8月', '9月', '10月','11月', '12月' ]
+					});
 		});
+		
 	function printEnroll() {
 		var pid = prompt("输入身份证编号，您的资料将被打印", "请输入");
 		if (pid == null || pid == "" || pid == "请输入") {
@@ -109,7 +118,7 @@ $(document).ready(
 <body class="body">
 
 	<div class="body_div">
-		<div class="p_1">辽宁省离校未就业高校毕业生专业转换及技能提升培训</div>
+		<div class="p_1">机动车驾驶证考试系统</div>
 		<div class="p_2">学员登记表</div>
 		<div>
 			<form name="form_1" method="post"
@@ -154,13 +163,14 @@ $(document).ready(
 						</td>
 					</tr>
 					<tr>
-						<td class="td_1">毕业院校</td>
-						<td colspan="3" class="td_1" id="t4" onclick="clickGraduteG()">
+						<td class="td_1">工作单位</td>
+						<td colspan="5" class="td_1" id="t4" onclick="clickGraduteG()">
 						<input name="graduteG" id="graduteG" type="text" class="in_5" onchange="checkGraduteG()" maxlength="30" onblur="blurGraduteG()" />
 							<label id="grad" style="float: left;word-wrap: break-word;word-break: normal;width: 250px;text-align: left; margin-left: 10px;font-family: Helvetica, Arial, sans-serif;"></label>		
 							
 						</td>
-						<td class="td_1">毕业年届</td>
+						<!-- 
+						<td class="td_1">报名时间</td>
 						<td class="td_1" onclick="clickGraduteY()" id='t13'><span
 							id="gradY"></span> <select id="graduteY" name="graduteY"
 							class="in_12" onblur="blurGraduteY()" onchange="checkGraduteY();blurGraduteY()">
@@ -181,27 +191,53 @@ $(document).ready(
 								%>
 						</select>
 						</td>
+						 -->
 					</tr>
 					<tr>
-						<td class="td_1">毕业时间</td>
+						<td class="td_1">报名时间</td>
 						<td colspan="3" class="td_1" onclick="clickGraduteD()" id="t15" align="left">
 							<span id='gradT' style="position: relative; left: -40px;font-family: Helvetica, Arial, sans-serif;font-size: 14px;"></span> 
 							<span style="position: relative; left: -35px; display: none;" id="da" tabindex="2" onblur="blurGraduteD()"> 
 								<input type="text" id="datepicker" name="datepicker" class="in_15" onchange="checkDatepicker()" /> 
 							</span>
 						</td>
-						<td class="td_1">学历</td>
+						<td class="td_1">工作类型</td>
 						<td class="td_1" id="t5" onclick="clickEducation()"><span
 							id="edu"></span> 
 							<select class="in_12" name="education" id="education" onblur="blurEducation();checkEducation();" onchange="checkEducation()">
 								<option value="">-选择-</option>
-								<option value="普通高校专科">专科</option>
-								<option value="普通高校本科">本科</option>
-								<option value="普通高校研究生及以上">研究生及以上</option>
+								<option value="市场营销">市场营销</option>
+								<option value="媒体广告">媒体广告</option>
+								<option value="软件网络">软件网络</option>
+								<option value="后勤文秘">后勤文秘</option>
+								<option value="企业高管">企业高管</option>
+								<option value="生产质检">生产质检</option>
+								<option value="机械工程">机械工程</option>
+								<option value="财会审计">财会审计</option>
+								<option value="金融投资">金融投资</option>
+								<option value="房产物业">房产物业</option>
+								<option value="交通物流">交通物流</option>
+								<option value="劳动家政">劳动家政</option>
+								<option value="店员导购">店员导购</option>
+								<option value="教育教练">教育教练</option>
+								<option value="资讯情报">资讯情报</option>
+								<option value="学术科研">学术科研</option>
+								<option value="法律产权">法律产权</option>
+								<option value="艺术设计">艺术设计</option>
+								<option value="影视新闻">影视新闻</option>
+								<option value="餐饮娱乐">餐饮娱乐</option>
+								<option value="化工资源">化工资源</option>
+								<option value="医疗保健">医疗保健</option>
+								<option value="语言翻译">语言翻译</option>
+								<option value="公务员">公务员</option>
+								<option value="环保园林">环保园林</option>
+								<option value="农林牧渔">农林牧渔</option>
+								<option value="学生及其他">学生及其他</option>
 						</select>
 						</td>
 					</tr>
 					<tr>
+					<!-- 
 						<td class="td_1">所学专业</td>
 						<td colspan="3" class="td_1" onclick="clickSpecialty()" id='t16'>
 							<span id='spec' class='in_13'></span> 
@@ -218,7 +254,7 @@ $(document).ready(
 								<option value="医学">医学</option>
 								<option value="军事学">军事学</option>
 								<option value="管理学">管理学</option>
-						</select>
+							</select>
 						</td>
 						<td class="td_1" colspan="2">健康状况</td>
 						<td class="td_3"  id="t11" onclick="clickHealthy()">
@@ -229,8 +265,17 @@ $(document).ready(
 								<option value="残疾">残疾</option>
 							</select>
 						</td>
-					</tr>
-					<tr>
+						 -->
+						<td class="td_1">健康状况</td>
+						<td class="td_1"  id="t11" onclick="clickHealthy()" colspan="3">
+							<span id="heal" style="display: none;"></span>
+							<select id='healthy' name='healthy' class="in_17"  onblur="blurHealthy()"  onchange="checkHealthy();blurHealthy()">
+								<option value="">-选择-</option>
+								<option value="健康">健康</option>
+								<option value="残疾">残疾</option>
+							</select>
+						</td>
+					<!-- 
 						<td class="td_1">政治面貌</td>
 						<td colspan="3" class="td_1" onclick="clickPolitics()" id="t17">
 							<span id="poli" class="in_14"></span> 
@@ -252,10 +297,13 @@ $(document).ready(
 								<option value="群众">群众</option>
 						</select>
 						</td>
+						 -->
 						<td colspan="2" class="td_1">出生日期</td>
-						<td class="td_3" id="t18">
-						<span id='birt' style="font-family: Helvetica, Arial, sans-serif;font-size: 14px;"></span>
-						<input name="birthday" id="birthday" type="hidden" />
+						<td class="td_3" id="t18" onclick="clickBirt()">
+						<span id='birtT' style="font-family: Helvetica, Arial, sans-serif;font-size: 14px;"></span>
+						<span style="position: relative; left: -35px; display: none;" id="birt" tabindex="2" onblur="blurBirt()"> 
+								<input type="text" id="birthday" name="birthday" class="in_15" onchange="checkBirt()" /> 
+						</span>
 						</td>
 					</tr>
 					<tr>
@@ -295,7 +343,7 @@ $(document).ready(
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="1" class="td_1">拟申报专业</td>
+						<td rowspan="1" class="td_1">拟报考驾<br />驶证类型</td>
 						<td colspan="3"class="td_1" onclick="clickSpecr()" id="t21">
 							<span id="specr" class="in_14"></span> 
 							<select name="specialtySubmit" id="specialtySubmit" class="in_14" tabindex="2" 
@@ -306,7 +354,7 @@ $(document).ready(
 								</s:iterator>
 						</select>
 						</td>
-						<td class="td_1" colspan="2">拟培训地点</td>
+						<td class="td_1" colspan="2">拟考试地点</td>
 						<!-- 
 						<td class="td_3" id="t12">
 						<input name="intention"
@@ -365,8 +413,8 @@ $(document).ready(
 			<div class="hr"></div>
 		</center>
 		<div align="center" class="div_2">
-			<p>辽宁省人力资源和社会保障厅</p>
-			<p>地址：沈阳市沈河区北京街7号辽宁有色大厦19-20楼</p>
+			<p>北京市公安局交通警察支队车辆管理所</p>
+			<p>地址：北京市*********</p>
 		</div>
 		<p></p>
 	</div>

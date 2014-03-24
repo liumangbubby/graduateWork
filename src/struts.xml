@@ -24,7 +24,7 @@
 		<action name="LoginAction" class="LoginAction">
 			<result name="success">/jsp/backyard/index.jsp</result>
 			<result name="fail">/jsp/backyard/login_fail.jsp</result>
-			<result name='out'>/jsp/backyard/login.jsp</result>
+			<result name='out'>/jsp/backyard/login_1.jsp</result>
 		</action>
 		<action name="ManageAction" class="ManageAction">
 			<result name="success">/jsp/backyard/index.jsp</result>

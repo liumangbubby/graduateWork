@@ -30,7 +30,7 @@ public class LoginFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-		if ("/stuenroll/jsp/backyard/login.jsp".equals(request.getRequestURI())
+		if ("/stuenroll/jsp/backyard/login_1.jsp".equals(request.getRequestURI())
 				|| "/stuenroll/jsp/backyard/LoginAction!login.action".equals(request.getRequestURI())) {
 			// 登陆界面，需要放行
 			chain.doFilter(req, res);
@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
 			// 没有登陆
 			String url = request.getRequestURL().toString();
 			String temp[] = url.split("/stuenroll"); // 取出网站的域名和端口
-			response.sendRedirect(temp[0] + "/stuenroll/jsp/backyard/login.jsp");
+			response.sendRedirect(temp[0] + "/stuenroll/jsp/backyard/login_1.jsp");
 
 		} else {
 			// 登陆成功

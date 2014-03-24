@@ -68,7 +68,7 @@ function printEnrollPDF() {
 <body class="page">
 	<div class="div_1">
 		<div class="font_1 div_2">
-			<strong>辽宁省离校未就业<br />专业技能培训
+			<strong>机动车驾驶证<br />理论考试
 			</strong>
 		</div>
 		<div class="div_3 font_2" onclick="linkTo()">我要报名</div>
