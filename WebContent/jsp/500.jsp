@@ -9,7 +9,7 @@
 
 <body bgcolor="#f2f3fa" >
 <center>
-<img src="../pic/500.png" width="508" height="464" style=" margin-top:60px;"/>
+<img src="/stuenroll/pic/500.png" width="508" height="464" style=" margin-top:60px;"/>
 </center>
 </body>
 </html>

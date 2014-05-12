@@ -20,7 +20,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- 已经设置避免MySQL长时间不使用，数据库断开连接 -->
 		<property name="url"
-			value="jdbc:mysql://192.168.137.2:3306/stu?autoReconnect=true" />
+			value="jdbc:mysql://192.168.175.2:3306/stu?autoReconnect=true" />
 		<property name="username" value="ww" />
 		<property name="password" value="root" />
 		<!-- 初始大小 -->

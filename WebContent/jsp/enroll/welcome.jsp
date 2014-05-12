@@ -62,6 +62,9 @@ function printEnrollPDF() {
 	function linkTo() {
 		window.location.href = "/stuenroll/jsp/enroll/stuenroll_note.jsp";
 	}
+	function link(){
+		window.location.href = "/stuenroll/jsp/enroll/index.jsp";
+	}
 </script>
 </head>
 
@@ -72,9 +75,7 @@ function printEnrollPDF() {
 			</strong>
 		</div>
 		<div class="div_3 font_2" onclick="linkTo()">我要报名</div>
-		<!-- 
-		<div class="div_4 font_3" onclick="printEnroll()">我要打印</div>
-		 -->
+		<div class="div_4 font_3" onclick="link()">游客登录</div>
 		<div class="div_4 font_4" onclick="printEnrollPDF()">下载我的报表</div>
 	</div>
 </body>
