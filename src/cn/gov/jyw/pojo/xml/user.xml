@@ -20,7 +20,7 @@
 		select * from user
 	</select>
 	<select id="SelectUserSchool" parameterClass="String" resultClass="String">
-		SELECT school FROM USER WHERE username=#username#;
+		SELECT school FROM user WHERE username=#username#;
 	</select>
 	<insert id="InsertUser" parameterClass="user">
 		insert into

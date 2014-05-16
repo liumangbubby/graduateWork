@@ -41,7 +41,7 @@ var uLED = function (conf) {
         led = font3;
         format = "hh:mm:ss";
     }
-    if (conf.bgcolor == "#000") {
+    if (conf.bgcolor == "#F4F4F4") {
         bgcolor = conf.bgcolor;
     }
     else if (conf.bgcolor == "#101a10") {

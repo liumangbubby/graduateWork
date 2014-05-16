@@ -140,6 +140,10 @@
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	<bean id="ExamDao" class="cn.gov.jyw.dao.ExamDao">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
 	<!-- *************** Bean *************************************************************************** -->
 
@@ -259,6 +263,9 @@
 	</bean>
 	<bean id="RemarkService" class="cn.gov.jyw.service.RemarkService" lazy-init="true">
 		<property name="remarkDAO" ref="RemarkDAO"></property>
+	</bean>
+	<bean id="ExamService" class="cn.gov.jyw.service.ExamService" lazy-init="true">
+		<property name="examDao" ref="ExamDao"></property>
 	</bean>
 	<!-- *************** Action *************************************************************************** -->
 
@@ -380,7 +387,9 @@
 		<property name="classInfoService" ref="ClassInfoService"></property>
 		<property name="excelBean" ref="ExcelBean"></property>
 	</bean>
-
+	<bean id="ExamAction" class="cn.gov.jyw.action.enroll.ExamAction" lazy-init="true">
+		<property name="examService" ref="ExamService"></property>
+	</bean>
 
 	<!-- Web服务 -->
 	<bean lazy-init="true" class="cn.gov.jyw.service.web.HelloImpl"

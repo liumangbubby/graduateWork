@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+	<sqlMap namespace="examchoose">
+	<typeAlias alias="examchoose" type="cn.gov.jyw.pojo.exam_choose" />
+	<typeAlias alias="SQLPager" type="org.plugbase.sql.SQLPager" />
+	<!-- 
+	<resultMap class="examchoose" id="ExamChooseResult">
+		<result property="choose_id" column="id"/>
+		<result property="exam_id" column="exam_id"/>
+		<result property="choose_body" column="choose_body"/>
+		<result property="right_answer_flag" column="right_answer_flag"/>
+		<result property="body_img" column="body_img"/>
+	</resultMap>
+	<select id="selecExamChoose" resultMap="ExamChooseResult" parameterClass="int">
+	select 
+		ec.id,
+		ec.exam_id,
+		ec.choose_body,
+		ec.right_answer_flag,
+		ec.body_img,
+	from 
+		examchoose ec
+	where
+		ec.exam_id = #exam_id#;		
+	</select>
+	 -->
+</sqlMap>

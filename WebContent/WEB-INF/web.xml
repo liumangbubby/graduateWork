@@ -58,6 +58,7 @@
 		<listener-class>cn.gov.jyw.listener.SystemListener</listener-class>
 	</listener>
 
+	<!-- Ajax -->
 	<servlet>
 		<servlet-name>PidAjax</servlet-name>
 		<servlet-class>cn.gov.jyw.ajax.PidAjax</servlet-class>
@@ -98,6 +99,15 @@
 		<servlet-name>RefAjax</servlet-name>
 		<url-pattern>/ajax/RefAjax</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>ExamAjax</servlet-name>
+		<servlet-class>cn.gov.jyw.ajax.ExamAjax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExamAjax</servlet-name>
+		<url-pattern>/ajax/ExamAjax</url-pattern>
+	</servlet-mapping>
+	<!-- END -->
 	
 	<!-- 验证码 -->
 	<servlet>
@@ -146,7 +156,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
- 
+ 	<!-- 
 	<error-page>
 		<error-code>500</error-code>
 		<location>/jsp/500.jsp</location>
@@ -156,7 +166,7 @@
 		<error-code>404</error-code>
 		<location>/jsp/404.jsp</location>
 	</error-page>
-
+	-->
 	<welcome-file-list>
 		<welcome-file>/jsp/index.jsp</welcome-file>
 	</welcome-file-list>

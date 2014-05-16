@@ -22,4 +22,8 @@
 	<sqlMap resource="cn/gov/jyw/pojo/xml/schedule.xml" />
 	<sqlMap resource="cn/gov/jyw/pojo/xml/stop.xml" />
 	<sqlMap resource="cn/gov/jyw/pojo/xml/remark.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/exam.xml" />
+	<!-- 
+	<sqlMap resource="cn/gov/jyw/pojo/xml/exam_choose.xml" />
+	-->
 </sqlMapConfig>

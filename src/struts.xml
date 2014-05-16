@@ -16,14 +16,19 @@
 			<result name="pdf">/jsp/enroll/pdf.jsp</result>
 			<result name="exp_success">/jsp/backyard/enroll_export.jsp</result>
 		</action>
+		<action name="ExamAction" class="ExamAction">
+			<result name="queryOne">/jsp/enroll/paper.jsp</result>
+		</action>
 	</package>
 	<package name="backyard" namespace="/jsp" extends="struts-default">
+		<!-- 
 		<global-results>
 			<result name="error" type='redirect'>/jsp/500.jsp</result>
 		</global-results>
+		 -->
 		<action name="LoginAction" class="LoginAction">
 			<result name="success">/jsp/backyard/index.jsp</result>
-			<result name="fail">/jsp/backyard/login_fail.jsp</result>
+			<result name="fail">/jsp/backyard/login_1.jsp</result>
 			<result name='out'>/jsp/backyard/login_1.jsp</result>
 		</action>
 		<action name="ManageAction" class="ManageAction">

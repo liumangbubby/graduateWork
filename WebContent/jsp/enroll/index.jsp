@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -101,9 +102,23 @@
 		<div id="left" class="layout_left"></div>
 		<div id="main" class="layout_main"></div>
 	-->
-		<div class="layout_middle_main"></div>
+		<div class="layout_middle_main">
+			<div id="time">
+				<div id="total">当前第  <b>*</b> 题，共  <b>*</b> 题，转到第<input id="ques_no" type="text" size="5"/>题</div>
+				<div id="time_sche"></div>
+			</div>
+			<div id="zhizhang">
+			</div>
+			<div id="menu_button">
+				<button id="mark" class="orange">mark</button>
+				<button id="help" class="orange">help</button>
+				<button id="previous" class="orange">previous</button>
+				<button id="next" class="orange">next</button>
+			</div>
+		</div>
 	</div>
-	<div id="footer" class="layout_footer"></div>
+	<div id="footer" class="layout_footer">
+	</div>
 </div>
 </body>
 </html>

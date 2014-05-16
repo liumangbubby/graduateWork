@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="Exam">
+	<typeAlias alias="Exam" type="cn.gov.jyw.pojo.exam" />
+	<typeAlias alias="ExamChoose" type="cn.gov.jyw.pojo.exam_choose" />
+
+
+	<resultMap class="Exam" id="ExamResult" groupBy="exam.exam_id">
+		<result property="exam_id" column="exam_id" />
+		<result property="exam_no" column="exam_no" />
+		<result property="exam_type" column="exam_type" />
+		<result property="exam_mappingno" column="exam_mappingno" />
+		<result property="exam_body" column="exam_body" />
+		<result property="body_img" column="body_img" />
+		<!--  
+		<result property="chooses" column="exam_id" select="getChooses" />
+		-->
+		<result property="chooses" resultMap="Exam.ChooseResult"/>
+	</resultMap>
+
+
+	<resultMap class="ExamChoose" id="ChooseResult" groupBy="chooses.choose_id">
+		<result property="choose_id" column="choose_id" />
+		<result property="exam_id" column="exam_id" />
+		<result property="choose_body" column="choose_body" />
+		<result property="right_answer_flag" column="right_answer_flag" />
+		<result property="choose_img" column="choose_img" />
+	</resultMap>
+
+
+	<select id="getExam" resultMap="ExamResult" parameterClass="int">
+		select * from exam where exam.exam_id = #id#
+	</select>
+	
+	<select id="getExam2" resultMap="ExamResult" parameterClass="int">
+		select
+			exam.*,chooses.*
+		from
+			exam left join exam_choose chooses on exam.exam_id = chooses.exam_id
+		where
+			exam.exam_id = #id#
+	</select>
+
+	<select id="getChooses" resultMap="ChooseResult" parameterClass="int">
+		select * from exam_choose where
+		exam_id = #value#
+	</select>
+</sqlMap>
+	
