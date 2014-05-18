@@ -12,6 +12,10 @@
 </head>
 <body>
 <div id="container">
+	<div id="login_flag" style="position: absolute;"></div>
+	<div id="random_flag" style="position: absolute;"></div>
+	<div id="login_window"></div>
+	<div id="zhezhao"></div>
 	<div id="top" class="layout_top">
 		<div class="layout_top_main">
 			<ul id="menu"> 
@@ -25,15 +29,15 @@
 			        -->
 			        <div style="background-color: rgb(124,183,227);width: 50px;color: rgb(124,183,227);float: left;">1</div>
 		    	</li> 
-			    <li><div class="menu_black"><a href="#">我的一点通</a></div>
+			    <li><div class="menu_black"><a href="javascript:void(0);">我的一点通</a></div>
 			    	<ul id="my"> 
 				        <li> 
 				            <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/> 
-				            <a href="#">我的报名信息</a> 
+				            <a href="/stuenroll/jsp/enroll/stuenroll_note.jsp" class="login_chick">我的报名信息</a> 
 				            <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/> 
 				        </li> 
-				        <li><a href="#">我的学习进程</a></li> 
-				        <li><a href="#">我的错题库</a></li> 
+				        <li><a href="javascript:void(0);" class="login_chick">我的学习进程</a></li> 
+				        <li><a href="javascript:void(0);" class="login_chick">我的错题库</a></li> 
 				        <li class="last"> 
 				            <img class="corner_left" alt="" src="../../images/corner_left.png"/> 
 				            <img class="middle" alt="" src="../../images/dot.gif"/> 
@@ -41,16 +45,16 @@
 				        </li> 
 				    </ul>
 			    </li> 
-			    <li><div class="menu_black"><a href="#">试题练习</a></div> 
+			    <li><div class="menu_black"><a href="javascript:void(0);">试题练习</a></div> 
 				    <ul id="prictise">
 				        <li> 
 				            <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/> 
-				            <a href="#">错题练习</a> 
+				            <a href="javascript:void(0);" class="login_chick">错题练习</a> 
 				            <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/> 
 				        </li> 
-				        <li><a href="#">顺序练习</a></li> 
-				        <li><a href="#">随机测试</a></li> 
-				        <li><a href="#">模拟测试</a></li>
+				        <li><a href="javascript:void(0);">顺序练习</a></li> 
+				        <li><a id="ranTest" href="javascript:void(0);" class="login_chick">随机练习</a></li> 
+				        <li><a href="javascript:void(0);">模拟测试</a></li>
 				        <li class="last"> 
 				            <img class="corner_left" alt="" src="../../images/corner_left.png"/> 
 				            <img class="middle" alt="" src="../../images/dot.gif"/> 
@@ -58,7 +62,7 @@
 				        </li> 
 				    </ul> 
 				</li>
-				<li><div class="menu_black"><a href="#">参加考试</a></div> 
+				<li><div class="menu_black"><a href="javascript:void(0);" class="login_chick">参加考试</a></div> 
 				    <ul id="prictise">
 				    <!-- 
 				        <li> 

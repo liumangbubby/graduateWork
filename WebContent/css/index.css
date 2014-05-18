@@ -442,3 +442,42 @@ body{
 	vertical-align:middle;
 	text-align:center;
 }
+/*
+¡Ù”√
+.choose_msg{
+	position: absolute;
+	margin: 0px;
+	height: 30px;
+	width: 320px;
+	left: 714px;
+	top: 490px;
+	border: dotted 1px;
+	background-color: red;
+	z-index: 9999;
+}
+*/
+#login_window{
+	position: absolute;
+	margin: 0px;
+	height: 380px;
+	width: 480px;
+	left: 450px;
+	top: 100px;
+	background-color: #FFFF99;
+	z-index: 9999;
+	box-shadow: 0 0 8px #FFD632,0 0 50px #FF7218;
+	border-radius: 22px;
+}
+#zhezhao{
+	position: absolute;
+	margin: 0px;
+	height: 680px;
+	width: 1349px;
+	left: 0px;
+	top: 0px;
+	background-color: #3F3F3F;
+	z-index: 9998;
+	filter:alpha(Opacity=80);
+	-moz-opacity:0.8;
+	opacity: 0.8;
+}

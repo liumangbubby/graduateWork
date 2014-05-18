@@ -134,10 +134,15 @@
 							<div class="choose_flag"></div>
 						</div>
 					</div>
-					<div id="right_answer" style="display: none;">${examlist[0].chooses[0].right_answer_flag}</div>
+					<div id="right_answer" style="display:none;position: absolute;top: 20px;left: 20px;z-index: -1">
+						<c:forEach items="${examlist}" var="exam">
+							<c:if test="${exam.chooses[0].right_answer_flag > 0}">${exam.chooses[0].right_answer_flag}</c:if>
+						</c:forEach>
+					</div>
 				</div>
 				<div id="exam_img"></div>
 		</div>
+		<div class="choose_msg"></div>
 </div>
 </body>
 </html>
