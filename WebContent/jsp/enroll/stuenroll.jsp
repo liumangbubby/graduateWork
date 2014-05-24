@@ -13,7 +13,6 @@
 <link href="../../css/enroll.css" rel="stylesheet" type="text/css" />
 <link href="../../js/zebra/zebra_datepicker_metallic.css"
 	rel="stylesheet" type="text/css" />
-<script src="../../js/broswer.js"></script>
 <script src="../../js/jquery-1.6.4.js"></script>
 <script src="../../js/zebra/zebra_datepicker.js"></script>
 

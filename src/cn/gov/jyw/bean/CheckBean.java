@@ -169,7 +169,7 @@ public class CheckBean {
 	}
 
 	/**
-	 * 验证学历，必须是指定的
+	 * 验证工作类型，必须是指定的
 	 * 
 	 * @param edu
 	 * @return
@@ -178,8 +178,35 @@ public class CheckBean {
 		if (edu == null) {
 			return false;
 		}
-		return ("普通高校专科".equals(edu) || "普通高校本科".equals(edu) || "普通高校研究生及以上"
-				.equals(edu));
+		return (
+				"市场营销  ".trim().equals(edu)||
+				"媒体广告  ".trim().equals(edu)||
+				"软件网络  ".trim().equals(edu)||
+				"后勤文秘  ".trim().equals(edu)||
+				"企业高管  ".trim().equals(edu)||
+				"生产质检  ".trim().equals(edu)||
+				"机械工程  ".trim().equals(edu)||
+				"财会审计  ".trim().equals(edu)||
+				"金融投资  ".trim().equals(edu)||
+				"房产物业  ".trim().equals(edu)||
+				"交通物流  ".trim().equals(edu)||
+				"劳动家政  ".trim().equals(edu)||
+				"店员导购  ".trim().equals(edu)||
+				"教育教练  ".trim().equals(edu)||
+				"资讯情报  ".trim().equals(edu)||
+				"学术科研  ".trim().equals(edu)||
+				"法律产权  ".trim().equals(edu)||
+				"艺术设计  ".trim().equals(edu)||
+				"影视新闻  ".trim().equals(edu)||
+				"餐饮娱乐  ".trim().equals(edu)||
+				"化工资源  ".trim().equals(edu)||
+				"医疗保健  ".trim().equals(edu)||
+				"语言翻译  ".trim().equals(edu)||
+				"公务员    ".trim().equals(edu)||
+				"环保园林  ".trim().equals(edu)||
+				"农林牧渔  ".trim().equals(edu)||
+				"学生及其他".trim().equals(edu)
+				);
 	}
 
 	/**

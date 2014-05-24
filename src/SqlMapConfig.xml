@@ -23,6 +23,7 @@
 	<sqlMap resource="cn/gov/jyw/pojo/xml/stop.xml" />
 	<sqlMap resource="cn/gov/jyw/pojo/xml/remark.xml" />
 	<sqlMap resource="cn/gov/jyw/pojo/xml/exam.xml" />
+	<sqlMap resource="cn/gov/jyw/pojo/xml/tb_user.xml"/>
 	<!-- 
 	<sqlMap resource="cn/gov/jyw/pojo/xml/exam_choose.xml" />
 	-->

@@ -58,7 +58,7 @@ public class SystemListener implements ServletContextListener {
 		String path = context.getRealPath("/");
 
 		context.setAttribute("jasperPath", path
-				+ "WEB-INF\\classes\\cn\\gov\\jyw\\ireport\\report1.jasper"); // jasper文件地址
+				+ "WEB-INF\\classes\\cn\\gov\\jyw\\ireport\\report2.jasper"); // jasper文件地址
 		context.setAttribute("root", path); // 网站根路径
 		context.setAttribute("pdfFloder", path + "\\pdf"); // PDF存放地址
 

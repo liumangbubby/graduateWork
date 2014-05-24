@@ -20,8 +20,8 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- 已经设置避免MySQL长时间不使用，数据库断开连接 -->
 		<property name="url"
-			value="jdbc:mysql://192.168.175.2:3306/stu?autoReconnect=true" />
-		<property name="username" value="ww" />
+			value="jdbc:mysql://localhost:3306/stu?autoReconnect=true" />
+		<property name="username" value="root" />
 		<property name="password" value="root" />
 		<!-- 初始大小 -->
 		<property name="initialSize" value="20"></property>
@@ -141,6 +141,10 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<bean id="ExamDao" class="cn.gov.jyw.dao.ExamDao">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="tbuserDao" class="cn.gov.jyw.dao.TbUserDAO">
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
@@ -267,6 +271,9 @@
 	<bean id="ExamService" class="cn.gov.jyw.service.ExamService" lazy-init="true">
 		<property name="examDao" ref="ExamDao"></property>
 	</bean>
+	<bean id="TbUserService" class="cn.gov.jyw.service.TbUserService" lazy-init="true">
+		<property name="userDAO" ref="tbuserDao"></property>
+	</bean>
 	<!-- *************** Action *************************************************************************** -->
 
 	<bean id="SchoolEnrollAction" class="cn.gov.jyw.action.enroll.SchoolEnrollAction"
@@ -389,6 +396,13 @@
 	</bean>
 	<bean id="ExamAction" class="cn.gov.jyw.action.enroll.ExamAction" lazy-init="true">
 		<property name="examService" ref="ExamService"></property>
+	</bean>
+	<bean id="UserLoginAction" class="cn.gov.jyw.action.enroll.UserLoginAction" lazy-init="true">
+		<property name="userService" ref="TbUserService"></property>
+	</bean>
+	<bean id="UserRegisterAction" class="cn.gov.jyw.action.enroll.UserRegisterAction" lazy-init="true">
+		<property name="userService" ref="TbUserService"></property>
+		<property name="enrollService" ref="StuEnrollService"></property>
 	</bean>
 
 	<!-- Web服务 -->

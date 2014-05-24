@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="516" leftMargin="42" rightMargin="37" topMargin="20" bottomMargin="20" uuid="2667d92f-3e71-480d-a6b4-a357a9629031">
+	<property name="ireport.zoom" value="1.464100000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="4"/>
+	<parameter name="pid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from stu_enroll where pid=$P{pid}]]>
+	</queryString>
+	<field name="id" class="java.math.BigInteger"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="sex" class="java.lang.String"/>
+	<field name="nation" class="java.lang.String"/>
+	<field name="pid" class="java.lang.String"/>
+	<field name="gradute_g" class="java.lang.String"/>
+	<field name="gradute_y" class="java.lang.String"/>
+	<field name="gradute_d" class="java.sql.Date"/>
+	<field name="education" class="java.lang.String"/>
+	<field name="specialty" class="java.lang.String"/>
+	<field name="healthy" class="java.lang.String"/>
+	<field name="politics" class="java.lang.String"/>
+	<field name="birthday" class="java.sql.Date"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="household" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="home_address" class="java.lang.String"/>
+	<field name="home_tel" class="java.lang.String"/>
+	<field name="specialty_submit" class="java.lang.String"/>
+	<field name="intention" class="java.lang.String"/>
+	<field name="remark" class="java.lang.String"/>
+	<field name="class_no" class="java.lang.String"/>
+	<field name="create_time" class="java.sql.Timestamp"/>
+	<field name="stu_no" class="java.lang.String"/>
+	<field name="join_state" class="java.lang.String"/>
+	<field name="edu_school" class="java.lang.String"/>
+	<field name="skilled" class="java.lang.String"/>
+	<field name="place" class="java.lang.String"/>
+	<field name="change_place" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2d184c5e-f0e1-4f9a-adcf-3550b748ba7b" x="0" y="15" width="516" height="38"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[机动车驾驶证考试系统]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3603b44b-f931-472b-aec8-0273f9696219" x="0" y="46" width="516" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isStrikeThrough="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[学员登记表]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="665" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="ecea3f98-65d3-4683-8418-0dafa51ba6d5" x="0" y="0" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6aa52c27-0350-44fb-9375-07f4ee47c1b9" x="77" y="0" width="80" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5686e427-2e79-472c-a039-a64fd7c3c2f5" x="157" y="0" width="58" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c9e3fa8c-2de4-42a5-9eb0-e40cbc8d3849" x="392" y="0" width="124" height="152"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f5b5b0f8-c4e8-4b0a-9a0f-b8af8a8434a3" x="0" y="380" width="77" height="241"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b5638caa-2101-41d5-96eb-1d1456a0a82b" x="77" y="380" width="439" height="241"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c2f82dcd-aa6a-41aa-b282-1a0ae4769ab6" x="0" y="621" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f7a9b7ca-dd9b-4b7b-9b26-cc79b43ea0a7" x="77" y="621" width="233" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="05d56d72-1535-4fc7-a394-362193cd5251" x="310" y="621" width="79" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e6af98e9-bbf3-49f6-8176-4ef327b94a4f" x="389" y="621" width="127" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="13c9535f-3861-443e-8439-f16a5e441b85" x="265" y="0" width="56" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fc84881b-d59e-40b6-8d3e-b89a96a83432" x="321" y="0" width="71" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="13969557-4f44-431b-baa3-6072b803d394" x="77" y="38" width="315" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5c283772-86de-4046-87cf-74df948caee3" x="0" y="38" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="35c24688-99c6-4695-b2b1-48c47b1d4ff6" x="0" y="76" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8c15a28b-116f-4018-91c4-67a7c60c57b6" x="77" y="76" width="315" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="327fa8a9-41ba-489f-b24b-d48fa3700028" x="0" y="114" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3701aed0-31ee-4773-81ab-bd77d6045376" x="77" y="114" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="18c8dc65-8994-4937-8aaa-78fc3060c312" x="227" y="114" width="94" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fa022ea0-6e67-4e55-9591-8cf6f4468a58" x="322" y="114" width="70" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="921521e5-d8dc-454e-a2fa-ca56f9f37871" x="0" y="152" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="813944da-e941-4d88-bdca-1513b696ef1d" x="77" y="152" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="00b3aa71-4a83-4ed9-b9ab-7912d4e42528" x="227" y="152" width="95" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="db155d99-f924-45cc-a028-0bec69e5a805" x="322" y="152" width="194" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2ad60dc2-b8d1-495e-a624-30bfc8774339" x="0" y="190" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5299ee9c-6048-414b-9e8f-95d1fd0dbede" x="77" y="190" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="cb4c0594-10a1-447a-a30d-b800ee71d130" x="227" y="190" width="95" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e169a339-e92a-4c7d-99d9-970662a53f97" x="322" y="190" width="194" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="88f26500-403d-4026-8b9b-0fd094e6916d" x="0" y="228" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f8acc9bf-4bbc-4850-9a7a-c0970e3b08be" x="77" y="228" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5a71cc5f-ceb5-4688-9d45-a6517cae3856" x="227" y="228" width="95" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0b8ed853-62ef-44c0-bcdf-c883e4747832" x="322" y="228" width="194" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="17055bce-7558-44b9-a8a3-c6aa1a7cbbe1" x="0" y="266" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c2d6dad1-79b3-4fa7-91d9-593520535150" x="77" y="266" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f1b51030-f4f0-4769-8332-e9d098ec86e7" x="227" y="266" width="95" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a2cc6ad4-966e-47fd-ad1f-8bb48c24e5d9" x="322" y="266" width="194" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="92d1d601-f374-429a-b293-01672209307b" x="0" y="304" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3c706b20-0042-4aab-9854-408ed7873ec7" x="77" y="304" width="150" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bde807cf-97d2-4742-bf22-8105ec55b1cf" x="227" y="304" width="95" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5ec98adc-4b7a-422d-a3fb-f2a28bfe428e" x="322" y="304" width="194" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="35879a5a-d6e9-4134-97b3-6fe5e423c4d4" x="215" y="0" width="50" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="cd3b7d5e-1d7e-4a09-acf9-5e2bcd4c9b4b" x="0" y="0" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[姓名]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e2eafdbe-3e23-4d1a-9e2b-ab66827f63fa" x="77" y="0" width="80" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="aa2b83aa-a9ea-4397-b8a3-aeef34a1b8f5" x="157" y="0" width="58" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[性别]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28afee17-97d5-4657-90b4-f1f6f5c03c56" x="0" y="38" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[身份证号]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b2a6e073-00ea-459f-a775-7db2f2f9b7b9" x="77" y="38" width="315" height="38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c6775749-89c6-4dc0-88f1-8e52547235a7" x="0" y="76" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[工作单位]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e04fbbc4-7012-4886-85ae-e8e043c8baeb" x="77" y="76" width="315" height="38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradute_g}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c7b0119d-0f24-49d3-b8ae-6a94b58a1574" x="0" y="114" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[报名时间]]></text>
+			</staticText>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement uuid="91284c13-6ff0-4ac2-9a80-f7b39ba1f49d" x="77" y="114" width="150" height="38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradute_d}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7a5af48f-4a4a-41b1-b9d0-7ed40f295446" x="227" y="114" width="95" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[工作类型]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fbd08c48-c9b6-47a9-a0f5-984eb34d98aa" x="322" y="114" width="70" height="38"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{education}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="aa76128a-334c-4b31-91ed-d256a4de5e2f" x="0" y="152" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[健康状况]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1113a54c-62b7-4371-b8ec-877909128685" x="77" y="152" width="150" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{healthy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="185e5a84-68f6-467d-85d3-5089f3c04abe" x="227" y="152" width="94" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[出生日期]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9666edc3-229d-4c29-8508-e648d6ce0c1f" x="215" y="0" width="50" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c2a61202-bfca-4c87-ac44-ffc7dca023bd" x="265" y="0" width="56" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[民族]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a819ce1c-a246-4cf5-8eb5-25183e2120dd" x="321" y="0" width="71" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nation}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement uuid="5e3fdf0d-3891-47f0-93cb-4d15bfce5cf4" x="322" y="152" width="194" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{birthday}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d5892a43-fd2a-4fb1-a76a-c04c29373f88" x="0" y="190" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[现居住地]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2ea581de-6b84-4d7b-a008-53472b0987ce" x="227" y="190" width="95" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[户籍所在地]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6e10734c-c10e-4eab-8c82-46e302ff3470" x="77" y="190" width="150" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="28ed98a8-6077-422a-8ee7-7565cc7cde39" x="322" y="190" width="194" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="10" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{household}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1d0d9a32-6a93-4496-9bcf-3361417f56ee" x="0" y="228" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[移动电话]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2cdab738-1e0e-4832-8a35-6f09606fb2d5" x="77" y="228" width="150" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="20">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="da7c6216-8a3e-4259-83f8-90c98fb41cdd" x="227" y="228" width="95" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1898b90b-e205-4958-833a-3df44ec57e74" x="322" y="228" width="194" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10" rightIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5acf93c3-055d-4b9b-9bb0-a2005dcdad99" x="0" y="266" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[家庭住址]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="12f05ba9-012e-464d-a28d-55f9f36ede43" x="77" y="266" width="150" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{home_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="03af4b0a-0064-4c00-af3b-198b6cb40e20" x="227" y="266" width="95" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[家庭联系电话]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="56d3e5d0-e50d-4ce4-bc0d-14d917201bfd" x="322" y="266" width="194" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="Courier" pdfEncoding="Cp1250"/>
+					<paragraph leftIndent="10" rightIndent="10">
+						<tabStop position="0" alignment="Left"/>
+					</paragraph>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{home_tel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="963e7eba-1f12-4dbf-a7b7-a8f0a434d099" x="0" y="304" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[拟报考驾
+驶证类型]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d25f1de5-d75b-4919-b8c8-8c3a8bb50eee" x="77" y="304" width="150" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{specialty_submit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7bda5d3d-ce49-4093-83fc-88834b1dc3d5" x="227" y="304" width="94" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[拟考试地点]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="433ebb8f-29d2-4e59-8373-a22a2aea80e9" x="321" y="304" width="195" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{place}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5d7b0045-77a9-4132-a0b6-aecf0439d777" x="24" y="418" width="16" height="179"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-V"/>
+				</textElement>
+				<text><![CDATA[上级审核机构]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2585df97-992c-4516-9eba-6bc93cde7de8" x="45" y="418" width="16" height="179"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-V"/>
+				</textElement>
+				<text><![CDATA[审核意见]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5f4c164d-88cb-4e2f-acc8-c320642c2809" x="370" y="584" width="121" height="24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[年         月         日]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c2dd04f-0c01-4f9d-87c8-1cbf6334b35c" x="0" y="621" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[备注]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c8a6e87e-68a8-430c-acb8-2a0bad815dc1" x="310" y="621" width="79" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[学生签名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="04808e43-0f55-4879-9db1-ffcc294c31ab" x="433" y="38" width="41" height="76"/>
+				<textElement textAlignment="Center">
+					<font size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[照片]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="25b93e76-b8c3-4988-94b7-64da7a93235b" x="0" y="342" width="77" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="747d7e21-f61e-4ebe-ac4f-55ccdd9129ac" x="0" y="342" width="77" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[备注]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="2030834d-55c0-4403-b4d7-2c4e5e219f36" x="77" y="342" width="439" height="38"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="60414eda-1f98-4a87-a551-5505cb47655e" x="77" y="342" width="439" height="38"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+					<paragraph leftIndent="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Boolean($F{remark}==null) ? "":$F{remark}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="30c16cc3-b72f-4e20-9405-e5f884c1e6a4" x="0" y="5" width="516" height="20"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[表格内容由网站自动生成]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

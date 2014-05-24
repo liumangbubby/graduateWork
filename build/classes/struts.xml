@@ -19,6 +19,11 @@
 		<action name="ExamAction" class="ExamAction">
 			<result name="queryOne">/jsp/enroll/paper.jsp</result>
 		</action>
+		<action name="UserLoginAction" class="UserLoginAction">
+		</action>
+		<action name="UserRegisterAction" class="UserRegisterAction">
+			<result name="success">/jsp/enroll/index.jsp</result>
+		</action>
 	</package>
 	<package name="backyard" namespace="/jsp" extends="struts-default">
 		<!-- 

@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>欢迎报名</title>
 <link href="../../css/welcome.css" rel="stylesheet" type="text/css" />
-<script src="../../js/broswer.js"></script>
 <script>
 function printEnroll() {
 	var pid = prompt("输入身份证编号，您的资料将被打印", "请输入");

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="container">
-	<div id="login_flag" style="position: absolute;"></div>
+	<div id="login_flag" style="position: absolute;>1</div>
 	<div id="random_flag" style="position: absolute;"></div>
 	<div id="login_window"></div>
 	<div id="zhezhao"></div>
@@ -33,7 +33,7 @@
 			    	<ul id="my"> 
 				        <li> 
 				            <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/> 
-				            <a href="/stuenroll/jsp/enroll/stuenroll_note.jsp" class="login_chick">我的报名信息</a> 
+				            <a href="javascript:void(0);" class="login_chick">我的报名信息</a> 
 				            <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/> 
 				        </li> 
 				        <li><a href="javascript:void(0);" class="login_chick">我的学习进程</a></li> 

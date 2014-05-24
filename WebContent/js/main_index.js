@@ -117,9 +117,16 @@ $(document).ready(function() {
 		if($("#login_flag").attr("class") != "flag"){
 			evt.preventDefault();
 			$("#zhezhao").fadeIn(1000);
-			$("#login_window").fadeIn(700,function(){
-				$(this).load("/stuenroll/jsp/enroll/login_window.jsp");
-			});
+			$("#login_window").fadeIn(700);
+			$("#login_window").load("/stuenroll/jsp/enroll/login_window.jsp");
+		}else{
+			if($.trim($(this).text()) == "我的报名信息"){
+				//640 520 1250
+				$("#container").css("height","1420");
+				$(".layout_middle_main").css("height","1385");
+				$(".layout_top_main").css("height","1385");
+				$(".layout_middle_main").load("/stuenroll/jsp/enroll/StuEnrollAction!toEnroll.action");
+			}
 		}
 	});
 	//登录取消

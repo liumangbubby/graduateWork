@@ -9,7 +9,6 @@
 <meta http-equiv="pragma" content="no-cache" />
 <title>个人信息申报</title>
 <link href="../../css/enroll.css" rel="stylesheet" type="text/css" />
-<script src="../../js/broswer.js"></script>
 <script src="../../js/jquery-1.6.4.js"></script>
 <script>
 	var hkey_root, hkey_path, hkey_key;

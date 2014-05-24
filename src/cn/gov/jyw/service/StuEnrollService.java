@@ -54,7 +54,7 @@ public class StuEnrollService {
 		Connection conn = stuEnrollDAO.getDataSource().getConnection();
 		File reportFile = new File(path);
 		JasperReport jasperReport = null;
-		jasperReport = (JasperReport) JRLoader.loadObject(reportFile.getPath());
+		jasperReport = (JasperReport) JRLoader.loadObjectFromFile(reportFile.getPath());
 		HashMap map = new HashMap();
 		map.put("pid", pid);
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, conn);

@@ -99,8 +99,8 @@ public class StuEnrollAction {
 		enroll.setEdu_school(eduSchool); // 保存学校
 		// 后台验证
 		if (checkBean.checkName(name) && checkBean.checkSex(sex) && checkBean.checkNation(nation) && checkBean.checkPid(pid) && checkBean.checkTel(tel)
-				&& checkBean.checkGraduteG(graduteG) && checkBean.checkGraduteY(graduteY) && checkBean.checkEducation(education)
-				&& checkBean.checkSpecialty(specialty) && checkBean.checkPolitics(politics) && checkBean.checkAddress(address)
+				&& checkBean.checkGraduteG(graduteG) && checkBean.checkEducation(education)
+				&& checkBean.checkAddress(address)
 				&& checkBean.checHousehold(household) && checkBean.checkEmail(email) && checkBean.checkHomeAddress(homeAddress)
 				&& checkBean.checkHomeTel(homeTel) && checkBean.checkHealthy(healthy)) {
 			boolean rs = stuEnrollService.addEnroll(enroll);

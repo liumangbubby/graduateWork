@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ref">
+	<typeAlias alias="tbuser" type="cn.gov.jyw.pojo.tb_user" />
+	<resultMap id="userresultMap" class="tbuser">
+		<result property="userId" column="id" />
+		<result property="userName" column="username" />
+		<result property="paseWord" column="password" />
+		<result property="enrollId" column="enroll_id"/>
+	</resultMap>
+	
+	<select id="SelectTbUser" parameterClass="java.util.Map" resultClass="int">
+		select count(*) from tb_user where username=#userName# and password=HEX(AES_ENCRYPT(#paseWord#,'HelloWorldHelloICSS'))
+	</select>
+	<insert id="InsertTbUser" parameterClass="tbuser">
+		insert into
+		tb_user(username,password,enroll_id) values(#userName#,HEX(AES_ENCRYPT(#paseWord#,'HelloWorldHelloICSS')),#enrollId#)
+	</insert>
+</sqlMap>
