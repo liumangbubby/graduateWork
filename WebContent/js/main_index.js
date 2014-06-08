@@ -1,4 +1,17 @@
 $(document).ready(function() {
+	//全局变量，用于保存用户想访问的页面
+	var visURL = null;
+	//全局变量，保存题目总数
+	var total_exam = 0;
+//	$("#total").hide();
+	//设置导航栏信息
+	$.getJSON('/stuenroll/ajax/QuesInfoAjax',function(data){
+		if(data.stutas == 100){
+			total_exam = data.data;
+			$("#total_qu_no").text(total_exam);
+		}
+	});
+	$("#time_sche").hide();
 	$("#login_window,#zhezhao").hide();
 	$("#schedule").load("/stuenroll/jsp/enroll/myschedule.jsp");
 	$("#zhizhang").load("/stuenroll/jsp/enroll/ExamAction!examQueryOne.action",{"id":"1"});
@@ -25,7 +38,7 @@ $(document).ready(function() {
 	$("#next").click(function() {
 		var id = parseInt($("#ques_id").html()) + 1;
 		var userid = $("#login_flag").text().trim();
-		if(id >= 973){
+		if(id >= total_exam){
 			alert("已经到最后了！");
 			return false;
 		}
@@ -64,6 +77,7 @@ $(document).ready(function() {
 	//选项按钮
 	$("#chooseA,#chooseB,#chooseC,#chooseD").live('click', function(){
 		var answer = parseInt($("#right_answer").text());
+		var userid = $("#curent_qu_no").text().trim();
 //		alert("answer:" + (answer != 0));
 		if($(this).attr("id") == $("#chooseA").attr("id")){
 			if(answer != 1){
@@ -73,6 +87,9 @@ $(document).ready(function() {
 				default:break;
 				}
 				alert("回答错误！正确答案为" + right_ans);
+				if($("#login_flag").attr("class") == "flag"){
+					$("#error_list").text($("#error_list").text()+userid+'#');
+				}
 				return false;
 			}
 		}
@@ -84,6 +101,9 @@ $(document).ready(function() {
 				default:break;
 				}
 				alert("回答错误！正确答案为" + right_ans);
+				if($("#login_flag").attr("class") == "flag"){
+					$("#error_list").text($("#error_list").text()+userid+'#');
+				}
 				return false;
 			}
 		}
@@ -95,6 +115,9 @@ $(document).ready(function() {
 				default:break;
 				}
 				alert("回答错误！正确答案为" + right_ans);
+				if($("#login_flag").attr("class") == "flag"){
+					$("#error_list").text($("#error_list").text()+userid+'#');
+				}
 				return false;
 			}
 		}
@@ -106,6 +129,9 @@ $(document).ready(function() {
 				default:break;
 				}
 				alert("回答错误！正确答案为" + right_ans);
+				if($("#login_flag").attr("class") == "flag"){
+					$("#error_list").text($("#error_list").text()+userid+'#');
+				}
 				return false;
 			}
 		}
@@ -119,19 +145,46 @@ $(document).ready(function() {
 			$("#zhezhao").fadeIn(1000);
 			$("#login_window").fadeIn(700);
 			$("#login_window").load("/stuenroll/jsp/enroll/login_window.jsp");
+			visURL = $(this).attr("id");
 		}else{
 			if($.trim($(this).text()) == "我的报名信息"){
 				//640 520 1250
-				$("#container").css("height","1420");
-				$(".layout_middle_main").css("height","1385");
-				$(".layout_top_main").css("height","1385");
-				$(".layout_middle_main").load("/stuenroll/jsp/enroll/StuEnrollAction!toEnroll.action");
+				var url = "/stuenroll/ajax/TbUserAjax?userid="+$("#login_flag").text();
+				$.getJSON(url,function(data){
+					if(data.stutas == 100){
+						url = "/stuenroll/jsp/enroll/StuEnrollAction!toPDFAjax.action?pid="+data.data.pid;
+						$.getJSON(url,function(data){
+							if(data.stutas == 100){
+								$("#container").css("height","1420");
+								$(".layout_middle_main").css("height","1385");
+								$(".layout_top_main").css("height","1385");
+								var src = '/stuenroll/pdf/'+data.data.filename;
+								var embed = $('<center><embed width="910" height="1300" src='+src+'> </embed><center>');
+								$(".layout_middle_main").html("");
+								embed.appendTo(".layout_middle_main");
+							}
+						});
+					}else{
+						//提示没有报名信息，询问是否要报名
+						$('#container').jconfirm('您还没有填写报名信息，您要注册吗?', '/stuenroll/jsp/enroll/stuenroll_note.jsp', 
+								{ title : '消息框', width : 300, height : 100, maskcolor : 'gray',maskopacity : 0.9 });
+					}
+				});
+				
+			}
+			else if($.trim($(this).text()) == "我的学习进程"){
+				
 			}
 		}
 	});
 	//登录取消
 	$("#zhezhao").click(function() {
+		var login_f = $("#login_flag").attr("class");
 		$("#login_window,#zhezhao").hide(600);
+		if(login_f == "flag" && visURL != null){
+			document.getElementById(visURL).click();
+			visURL = null;
+		}
 	});
 	//随机测试处理函数
 	$("#ranTest").click(function(){
@@ -144,13 +197,52 @@ $(document).ready(function() {
 					data = data.data;
 					setText(data);
 					$("#random_flag").attr("class","flag");
-					$("#previous").attr("readonly","readonly");
+					$("#previous").attr("disabled","disabled");
 				}else if(data.stutas == 500){
 					alert("出错"+data.msg);
 				}
 			});
 		}else{
+			if(visURL == null){
+				visURL = 'ranTest';
+			}
 			alert("没有登录");
+		}
+	});
+	//顺序练习
+	$("#sx").click(function(){
+		var login_f = $("#login_flag").attr("class");
+		var userid = $("#login_flag").text().trim();
+		if(login_f == "flag"){
+			var url = "/stuenroll/jsp/enroll/UserDetailsAction!queryUserQuesNo.action?user_id="+userid;
+			$.getJSON(url,function(data){
+				if(data.stutas == 100){
+					url="/stuenroll/ajax/ExamAjax?ids="+data.data;
+					$("#exam_img img").remove();
+					$.getJSON(url,function(data){
+						setText(data);
+					});
+				}
+			});
+			$("#sx_flag").text('type:0');
+		}else{
+			 if(confirm("您现在没有登录，登录后可以记录您的答题信息。您要登录吗？")){
+				visURL = $(this).attr("id");
+				$("#zhezhao").fadeIn(1000);
+				$("#login_window").fadeIn(700);
+				$("#login_window").load("/stuenroll/jsp/enroll/login_window.jsp");
+			 }
+		}
+	});
+	//跳转题目
+	$("#next_ques_no").change(function(){
+		var next_no = $("#next_ques_no").val();
+		if(next_no > 0 && next_no < total_exam){
+			var url = "/stuenroll/ajax/ExamAjax?ids=" + next_no;
+			$("#exam_img img").remove();
+			$.getJSON(url,function(data){
+				setText(data);
+			});
 		}
 	});
 	//页面设置内容函数
@@ -164,6 +256,7 @@ $(document).ready(function() {
 		}
 		$("#ques_body").text(data[0].exam_body);
 		$("#ques_id").html(data[0].exam_id);
+		$("#curent_qu_no").text(data[0].exam_id);
 		if(data[0].body_img.length != 0)
 			$("<img/>").attr("src",data[0].body_img).appendTo("#exam_img");
 		if(data[0].exam_type == 2){
@@ -191,4 +284,23 @@ $(document).ready(function() {
 			$("#right_answer").text(data[0].chooses[0].right_answer_flag);
 		}
 	}
+});
+$(window).bind('beforeunload',function(){
+	var ques_id = $("#ques_id").text().trim();
+	var userid = $("#login_flag").text().trim();
+	var errorlist = $("#error_list").text().trim();
+	var if_sx = $("#sx_flag").text();
+	var login_f = $("#login_flag").attr("class");
+	var url = '/stuenroll/jsp/enroll/UserDetailsAction!insertDetails.action';
+	if(login_f == "flag" && if_sx == 'type:0'){
+		$("#sx_flag").text('');
+		$.ajax({
+			  url: url,
+			  type: 'post',
+			  data: {'user_id':userid,'exam_no':ques_id,'type_no':'0','errorlist':errorlist},
+			  async: false
+//			  success: function(data, textStatus){alert('success');},
+		});
+	}
+//	return '您输入的内容尚未保存，确定离开此页面吗？';
 });

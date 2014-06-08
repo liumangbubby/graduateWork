@@ -148,6 +148,18 @@
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	<bean id="UserDetailsDAO" class="cn.gov.jyw.dao.UserDetailsDAO">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="othersDAO" class="cn.gov.jyw.dao.OthersDAO">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="errorTemDao" class="cn.gov.jyw.dao.ErrorTemDAO">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
 	<!-- *************** Bean *************************************************************************** -->
 
@@ -273,6 +285,15 @@
 	</bean>
 	<bean id="TbUserService" class="cn.gov.jyw.service.TbUserService" lazy-init="true">
 		<property name="userDAO" ref="tbuserDao"></property>
+	</bean>
+	<bean id="UserDetailsService" class="cn.gov.jyw.service.UserDetailsService" lazy-init="true">
+		<property name="detailDao" ref="UserDetailsDAO"></property>
+	</bean>
+	<bean id="OthersService" class="cn.gov.jyw.service.OthersService" lazy-init="true">
+		<property name="othersDAO" ref="othersDAO"></property>
+	</bean>
+	<bean id="errorTemServ" class="cn.gov.jyw.service.ErrorTemService" lazy-init="true">
+		<property name="errorTemDao" ref="errorTemDao"></property>
 	</bean>
 	<!-- *************** Action *************************************************************************** -->
 
@@ -403,6 +424,10 @@
 	<bean id="UserRegisterAction" class="cn.gov.jyw.action.enroll.UserRegisterAction" lazy-init="true">
 		<property name="userService" ref="TbUserService"></property>
 		<property name="enrollService" ref="StuEnrollService"></property>
+	</bean>
+	<bean id="UserDetailsAction" class="cn.gov.jyw.action.enroll.UserDetailsAction" lazy-init="true">
+		<property name="detailsServ" ref="UserDetailsService"></property>
+		<property name="errorServ" ref="errorTemServ"></property>
 	</bean>
 
 	<!-- Web服务 -->

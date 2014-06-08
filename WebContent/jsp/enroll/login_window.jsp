@@ -18,18 +18,23 @@
 			var rnd = Math.random();
 			$(".checkImg").attr("src","/stuenroll/simpleCaptcha.png?rnd="+rnd);
 		});
-		$("#cheNum").blur(function(){
-			$.ajax(
-				{
-				url:"http://localhost:8080/stuenroll/ajax/CaptAjax?answer="+$("#cheNum").val(),
-				type:"get",
-				dataType:"json",
-				success:function(data){
-					if($.trim(data) == $.trim("true")){
-						$("fieldset input[type=submit]").removeAttr("disabled");
-					}else{
-						alert("验证码错误");
-					}
+		$("#cheNum").focus(function(){
+			$(this).bind("keyup", function(){
+				var num = $('#cheNum').val();
+				if(num.length == 5){
+					$.ajax(
+						{
+						url:"http://localhost:8080/stuenroll/ajax/CaptAjax?answer="+$("#cheNum").val(),
+						type:"get",
+						dataType:"json",
+						success:function(data){
+							if($.trim(data) == $.trim("true")){
+								$("fieldset input[type=submit]").removeAttr("disabled");
+							}else{
+								alert("验证码错误");
+							}
+						}
+					});
 				}
 			});
 		});
@@ -46,8 +51,8 @@
 							alert(data.msg);
 						}else{
 							$("#login_flag").attr("class","flag");
-							$("#login_flag").text($.trim($("fieldset input[name='userName']").val()));
-							alert("登录成功");
+							$("#login_flag").text(data.data);
+//							alert("登录成功");
 							$("#zhezhao").click();
 						}
 					}

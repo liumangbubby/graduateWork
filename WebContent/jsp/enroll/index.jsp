@@ -5,15 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" href="../../css/index.css" rel="stylesheet"/>
-<script type="text/javascript" src="../../js/jquery-1.6.4.js"></script>
-<script type="text/javascript" src="../../js/main_index.js"></script>
+<link type="text/css" href="/stuenroll/css/index.css" rel="stylesheet"/>
+<script type="text/javascript" src="/stuenroll/js/jquery-1.6.4.js"></script>
+<script type="text/javascript" src="/stuenroll/js/jquery.msgbox.js"></script>
+<script type="text/javascript" src="/stuenroll/js/main_index.js"></script>
+<script type="text/javascript" src="/stuenroll/js/jquery.msgbox.js"></script>
 <title>游客主页</title>
 </head>
 <body>
 <div id="container">
-	<div id="login_flag" style="position: absolute;>1</div>
+	<div id="login_flag" style="position: absolute;">0</div>
 	<div id="random_flag" style="position: absolute;"></div>
+	<div id="sx_flag" style="position: absolute;"></div>
+	<div id="error_list" style="position: absolute;"></div>
 	<div id="login_window"></div>
 	<div id="zhezhao"></div>
 	<div id="top" class="layout_top">
@@ -33,11 +37,11 @@
 			    	<ul id="my"> 
 				        <li> 
 				            <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/> 
-				            <a href="javascript:void(0);" class="login_chick">我的报名信息</a> 
+				            <a href="javascript:void(0);" class="login_chick" id="myinfo">我的报名信息</a> 
 				            <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/> 
 				        </li> 
-				        <li><a href="javascript:void(0);" class="login_chick">我的学习进程</a></li> 
-				        <li><a href="javascript:void(0);" class="login_chick">我的错题库</a></li> 
+				        <li><a href="javascript:void(0);" class="login_chick" id="mysche">我的学习进程</a></li> 
+				        <li><a href="javascript:void(0);" class="login_chick"id="myexam">我的错题库</a></li> 
 				        <li class="last"> 
 				            <img class="corner_left" alt="" src="../../images/corner_left.png"/> 
 				            <img class="middle" alt="" src="../../images/dot.gif"/> 
@@ -49,12 +53,12 @@
 				    <ul id="prictise">
 				        <li> 
 				            <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/> 
-				            <a href="javascript:void(0);" class="login_chick">错题练习</a> 
+				            <a href="javascript:void(0);" class="login_chick" id="ct">错题练习</a> 
 				            <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/> 
 				        </li> 
-				        <li><a href="javascript:void(0);">顺序练习</a></li> 
+				        <li><a id="sx" href="javascript:void(0);">顺序练习</a></li> 
 				        <li><a id="ranTest" href="javascript:void(0);" class="login_chick">随机练习</a></li> 
-				        <li><a href="javascript:void(0);">模拟测试</a></li>
+				        <li><a href="javascript:void(0);" class="login_chick">模拟测试</a></li>
 				        <li class="last"> 
 				            <img class="corner_left" alt="" src="../../images/corner_left.png"/> 
 				            <img class="middle" alt="" src="../../images/dot.gif"/> 
@@ -108,7 +112,11 @@
 	-->
 		<div class="layout_middle_main">
 			<div id="time">
-				<div id="total">当前第  <b>*</b> 题，共  <b>*</b> 题，转到第<input id="ques_no" type="text" size="5"/>题</div>
+				<div id="total">当前第  
+					<div id="curent_qu_no" style="font-weight: bold;display: inline;">1</div> 题，共  
+					<div id="total_qu_no" style="font-weight: bold;display: inline;"></div> 题，转到第
+					<input id="next_ques_no" type="text" size="5" style="display: inline;"/> 题
+				</div>
 				<div id="time_sche"></div>
 			</div>
 			<div id="zhizhang">

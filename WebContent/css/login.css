@@ -220,7 +220,7 @@ h1:before {
 #cheNum{
 	width: 105px;
 }
-fieldset input[disabled=disabled]{
+fieldset input[disabled=disabled],fieldset input[disabled=disabled]:hover{
 	text-align: center;
 	padding: 2px 20px;
 	line-height: 2em;
@@ -235,7 +235,7 @@ fieldset input[disabled=disabled]{
 	-ms-filter:
 		"progid:DXImageTransform.Microsoft.gradient(startColorstr='#AA967E', endColorstr='#947C62')";
 	height: 30px;
-	cursor: pointer;
+	cursor: not-allowed;
 	letter-spacing: 4px;
 	margin-left: 10px;
 	color: #FFF;

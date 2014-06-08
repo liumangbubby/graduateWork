@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ref">
+	<typeAlias alias="errorexamtem" type="cn.gov.jyw.pojo.error_exam_tem" />
+	<resultMap id="errortemresultMap" class="errorexamtem">
+		<result property="tem_id" column="id" />
+		<result property="user_id" column="user_id" />
+		<result property="exam_id" column="exam_id" />
+	</resultMap>
+	
+	<select id="QueryTemErrorInfoByUser" parameterClass="int" resultClass="int">
+		select ques_no from user_details where user_id = #user_id# and savedate = (
+			select max(savedate) from user_details where user_id = #user_id#
+			)
+	</select>
+	<insert id="InsertErrorTem" parameterClass="errorexamtem">
+		insert into
+		error_exam_tem(user_id,exam_id) values(#user_id#,#exam_id#)
+	</insert>
+</sqlMap>

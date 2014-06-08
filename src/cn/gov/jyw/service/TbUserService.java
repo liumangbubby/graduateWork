@@ -21,7 +21,7 @@ public class TbUserService {
 		return this.userDAO.getUserAll();
 	}
 	
-	public boolean hasUser(String username,String password){
+	public int hasUser(String username,String password){
 		return userDAO.hasUser(username, password);
 	}
 

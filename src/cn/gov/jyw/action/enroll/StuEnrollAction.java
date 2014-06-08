@@ -1,9 +1,13 @@
 package cn.gov.jyw.action.enroll;
 
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -16,7 +20,9 @@ import cn.gov.jyw.service.PlaceService;
 import cn.gov.jyw.service.RemarkService;
 import cn.gov.jyw.service.SpecialtyReportService;
 import cn.gov.jyw.service.StuEnrollService;
+import cn.gov.jyw.util.MessageBox;
 
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.util.ValueStack;
 
@@ -154,6 +160,35 @@ public class StuEnrollAction {
 		ValueStack stack = ActionContext.getContext().getValueStack();
 		stack.set("fileName", fileName);
 		return "pdf";
+	}
+	
+	public String toPDFAjax() throws Exception {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
+		Gson gson = new Gson();
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json;charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		Map map = ActionContext.getContext().getApplication();
+		String jasperPath = (String) map.get("jasperPath");
+		String floder = (String) map.get("pdfFloder");
+		String fileName = stuEnrollService.toPrint(jasperPath, pid, floder);
+		Map pdfmap = new HashMap();
+		pdfmap.put("filename", fileName);
+		MessageBox msg = new MessageBox();
+		if(!"".equals(fileName) && fileName.length() > 0){
+			msg.setStutas(MessageBox.SUCCESS);
+			msg.setData(pdfmap);
+		}else{
+			msg.setStutas(MessageBox.ERROR);
+			msg.setMsg("生成pdf错误！");
+		}
+		PrintWriter writer = response.getWriter();
+		writer.write(gson.toJson(msg));
+		writer.flush();
+		writer.close();
+		return null;
 	}
 
 	public StuEnrollService getStuEnrollService() {

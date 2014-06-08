@@ -57,8 +57,10 @@ public class UserLoginAction extends ActionSupport{
 		res.setHeader("Cache-Control", "no-cache");
 		MessageBox msg = new MessageBox();
 		Gson gson = new Gson();
-		if(userService.hasUser(userName, password)){
+		int userid = userService.hasUser(userName, password);
+		if(userid > 0){
 			msg.setStutas(MessageBox.SUCCESS);
+			msg.setData(userid);
 		}else{
 			msg.setStutas(MessageBox.ERROR);
 			msg.setMsg("用户不存在，账户名或密码错误");

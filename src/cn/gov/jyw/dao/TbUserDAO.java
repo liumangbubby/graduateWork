@@ -2,18 +2,19 @@ package cn.gov.jyw.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import cn.gov.jyw.pojo.tb_user;
 
 public class TbUserDAO extends SqlMapClientDaoSupport{
-	public boolean hasUser(String username, String password) {
+	public int hasUser(String username, String password) {
 		HashMap map = new HashMap();
 		map.put("userName", username);
 		map.put("paseWord", password);
 		int count = (Integer) this.getSqlMapClientTemplate().queryForObject("SelectTbUser", map);
-		return count > 0 ? true : false;
+		return count > 0 ? count : 0;
 	}
 	
 	public void addUser(tb_user user) {
@@ -28,5 +29,11 @@ public class TbUserDAO extends SqlMapClientDaoSupport{
 	public List<tb_user> getUserAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public tb_user getPID(String userid){
+		Map map = new HashMap();
+		map.put("userId", userid);
+		return (tb_user) this.getSqlMapClientTemplate().queryForObject("SelectUser", map);
 	}
 }

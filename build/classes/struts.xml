@@ -24,6 +24,8 @@
 		<action name="UserRegisterAction" class="UserRegisterAction">
 			<result name="success">/jsp/enroll/index.jsp</result>
 		</action>
+		<action name="UserDetailsAction" class="UserDetailsAction">
+		</action>
 	</package>
 	<package name="backyard" namespace="/jsp" extends="struts-default">
 		<!-- 
