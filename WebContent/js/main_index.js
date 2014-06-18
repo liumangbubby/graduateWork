@@ -11,11 +11,12 @@ $(document).ready(function() {
 			$("#total_qu_no").text(total_exam);
 		}
 	});
-	$("#time_sche").hide();
+//	$("#time_sche").hide();
 	$("#login_window,#zhezhao").hide();
 	$("#schedule").load("/stuenroll/jsp/enroll/myschedule.jsp");
 	$("#zhizhang").load("/stuenroll/jsp/enroll/ExamAction!examQueryOne.action",{"id":"1"});
 	/*
+	$("#time_sche").load("/stuenroll/jsp/enroll/countdown.jsp");
 	$("#zhizhang").load("/stuenroll/jsp/enroll/paper.jsp");
 	$("#time_sche").load("/stuenroll/jsp/enroll/timeSche.jsp");
 	*/
@@ -159,8 +160,11 @@ $(document).ready(function() {
 								$(".layout_middle_main").css("height","1385");
 								$(".layout_top_main").css("height","1385");
 								var src = '/stuenroll/pdf/'+data.data.filename;
-								var embed = $('<center><embed width="910" height="1300" src='+src+'> </embed><center>');
-								$(".layout_middle_main").html("");
+								var embed = $('<div id="showpdf"><center><embed width="910" height="1300" src='+src+'> </embed><center></div>');
+								$("#time").hide();
+								$("#zhizhang").hide();
+								$("#menu_button").hide();
+								$(".layout_middle_main center").remove();
 								embed.appendTo(".layout_middle_main");
 							}
 						});
@@ -173,7 +177,21 @@ $(document).ready(function() {
 				
 			}
 			else if($.trim($(this).text()) == "我的学习进程"){
-				
+				$("#showpdf").remove();
+				$("#container").css("height","1035");
+				$(".layout_middle_main").css("height","1000");
+				$(".layout_top_main").css("height","1000");
+				$("#time").hide();
+				$("#zhizhang").hide();
+				$("#menu_button").hide();
+				$("<center></center>").appendTo(".layout_middle_main");
+				/*$(".layout_middle_main center").load('/stuenroll/html/chart.html #tongji_chart,#error_chart,script',function(){
+					$.getScript('/stuenroll/js/ichart.1.2.min.js');
+				});*/
+				$(".layout_middle_main center").load('/stuenroll/jsp/enroll/chart.jsp');
+			}
+			else if($.trim($(this).text() == "模拟测试")){
+				window.location.href="/stuenroll/jsp/TextPaperAction!toPaper.action?userid="+$("#login_flag").text();
 			}
 		}
 	});
@@ -188,6 +206,14 @@ $(document).ready(function() {
 	});
 	//随机测试处理函数
 	$("#ranTest").click(function(){
+		$("#showpdf").remove();
+		$(".layout_middle_main center").remove();
+		$("#time").show();
+		$("#zhizhang").show();
+		$("#menu_button").show();
+		$("#container").css("height","555");
+		$(".layout_middle_main").css("height","520");
+		$(".layout_top_main").css("height","600");
 		var login_f = $("#login_flag").attr("class");
 		var userid = $("#login_flag").text().trim();
 		var url = "/stuenroll/ajax/ExamAjax?ids=-1&userid="+userid;
@@ -202,6 +228,7 @@ $(document).ready(function() {
 					alert("出错"+data.msg);
 				}
 			});
+			$("#sx_flag").text('');
 		}else{
 			if(visURL == null){
 				visURL = 'ranTest';
@@ -211,6 +238,14 @@ $(document).ready(function() {
 	});
 	//顺序练习
 	$("#sx").click(function(){
+		$("#showpdf").remove();
+		$(".layout_middle_main center").remove();
+		$("#time").show();
+		$("#zhizhang").show();
+		$("#menu_button").show();
+		$("#container").css("height","555");
+		$(".layout_middle_main").css("height","520");
+		$(".layout_top_main").css("height","600");
 		var login_f = $("#login_flag").attr("class");
 		var userid = $("#login_flag").text().trim();
 		if(login_f == "flag"){
@@ -257,8 +292,10 @@ $(document).ready(function() {
 		$("#ques_body").text(data[0].exam_body);
 		$("#ques_id").html(data[0].exam_id);
 		$("#curent_qu_no").text(data[0].exam_id);
-		if(data[0].body_img.length != 0)
+		if(data[0].body_img.length != 0){
+			$("#exam_img").html('');
 			$("<img/>").attr("src",data[0].body_img).appendTo("#exam_img");
+		}
 		if(data[0].exam_type == 2){
 			$("#chooseC").show();
 			$("#chooseD").show();
@@ -300,6 +337,13 @@ $(window).bind('beforeunload',function(){
 			  data: {'user_id':userid,'exam_no':ques_id,'type_no':'0','errorlist':errorlist},
 			  async: false
 //			  success: function(data, textStatus){alert('success');},
+		});
+	}else{
+		$.ajax({
+			  url: url,
+			  type: 'post',
+			  data: {'user_id': userid,'exam_no':'-1','type_no':'0','errorlist':errorlist},
+			  async: false
 		});
 	}
 //	return '您输入的内容尚未保存，确定离开此页面吗？';

@@ -45,6 +45,10 @@ public class StuEnrollService {
 	public stu_enroll selectStuEnrollByPid(String pid, String edu_school,String remark) {
 		return stuEnrollDAO.selectStuEnrollByPid(pid, edu_school,remark);
 	}
+	
+	public stu_enroll selectById(long id){
+		return stuEnrollDAO.getOne(id);
+	}
 
 	public void updateStuEnrollClassNo(String classNo, String[] pid) throws Exception {
 		stuEnrollDAO.updateStuEnrollClassNo(classNo, pid);

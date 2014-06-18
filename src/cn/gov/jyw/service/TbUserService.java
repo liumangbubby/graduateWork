@@ -1,6 +1,8 @@
 package cn.gov.jyw.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.gov.jyw.dao.TbUserDAO;
 import cn.gov.jyw.pojo.tb_user;
@@ -21,8 +23,19 @@ public class TbUserService {
 		return this.userDAO.getUserAll();
 	}
 	
+	public tb_user getUser(int userid){
+		return this.userDAO.getUser(userid);
+	}
+	
 	public int hasUser(String username,String password){
 		return userDAO.hasUser(username, password);
+	}
+	
+	public void updateExamScore(int userid,int score){
+		Map map = new HashMap();
+		map.put("userid", userid);
+		map.put("score", score);
+		userDAO.updateUser(map);
 	}
 
 	// //////////////////////////////////////////////////////////

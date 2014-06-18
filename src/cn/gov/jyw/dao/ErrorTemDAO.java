@@ -11,6 +11,9 @@ import com.ibatis.sqlmap.client.SqlMapExecutor;
 import cn.gov.jyw.pojo.error_exam_tem;
 
 public class ErrorTemDAO extends SqlMapClientDaoSupport {
+	public List<error_exam_tem> queryTemErrorByUser(int userid){
+		return this.getSqlMapClientTemplate().queryForList("QueryTemErrorInfoByUser", userid);
+	}
 	public void addErrorTem(final List<error_exam_tem> errors){
 		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
 			@Override
@@ -25,5 +28,8 @@ public class ErrorTemDAO extends SqlMapClientDaoSupport {
 			}
 			
 		});
+	}
+	public void deleteAllInfo(){
+		this.getSqlMapClientTemplate().delete("DeleteAll");
 	}
 }

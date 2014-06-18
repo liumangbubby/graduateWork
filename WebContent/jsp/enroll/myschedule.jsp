@@ -22,7 +22,7 @@ $(document).ready(function() {
 	var l0 = new uLED({
 		id : "led0",
 		type : "countdown",
-		format : "ddd:hh:mm:ss",
+		format : "mm:ss",
 		color : "#FF0000",
 		bgcolor : "#222",
 		size : 3,

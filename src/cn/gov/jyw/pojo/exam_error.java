@@ -14,10 +14,11 @@ public class exam_error {
 		this.error_time = error_time;
 		this.review_time = review_time;
 	}
-	public exam_error(int user_id, int exam_id) {
+	public exam_error(int user_id, int exam_id,int error_time) {
 		super();
 		this.user_id = user_id;
 		this.exam_id = exam_id;
+		this.error_time = error_time;
 	}
 	public exam_error() {
 		super();

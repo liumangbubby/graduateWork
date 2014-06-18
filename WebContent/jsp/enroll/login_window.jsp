@@ -91,7 +91,7 @@
 							value="true"> <span>下次自动登录</span>
 					</fieldset>
 					<fieldset>
-						<input type="submit" value="登录"  disabled="disabled" id="sub"> <a id="forgot"
+						<input type="submit" value="登录"  id="sub"> <a id="forgot"
 							href="javascript:void(0);">忘记密码？</a> <a id="register"
 							href="javascript:void(0);">注册</a>
 					</fieldset>

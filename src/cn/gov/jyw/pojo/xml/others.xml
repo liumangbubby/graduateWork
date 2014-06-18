@@ -8,5 +8,10 @@
 	<select id="SelectExamTotal" resultClass="int">
 		select count(*) from exam;
 	</select>
+	<!-- 查询出错题目数量和日期 
+	<select id="SelectErrorCountDate" resultClass="java.util.Map" parameterMap="java.util.Map">
+		select sum(error_time) as count,savadate from 
+	</select>
+	-->
 </sqlMap>
 	

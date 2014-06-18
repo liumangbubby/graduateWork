@@ -7,18 +7,18 @@
 <sqlMap namespace="ref">
 	<typeAlias alias="errorexamtem" type="cn.gov.jyw.pojo.error_exam_tem" />
 	<resultMap id="errortemresultMap" class="errorexamtem">
-		<result property="tem_id" column="id" />
 		<result property="user_id" column="user_id" />
 		<result property="exam_id" column="exam_id" />
 	</resultMap>
 	
-	<select id="QueryTemErrorInfoByUser" parameterClass="int" resultClass="int">
-		select ques_no from user_details where user_id = #user_id# and savedate = (
-			select max(savedate) from user_details where user_id = #user_id#
-			)
+	<select id="QueryTemErrorInfoByUser" parameterClass="int" resultMap="errortemresultMap">
+		select user_id,exam_id from error_exam_tem er where er.user_id = #userid#
 	</select>
 	<insert id="InsertErrorTem" parameterClass="errorexamtem">
 		insert into
 		error_exam_tem(user_id,exam_id) values(#user_id#,#exam_id#)
 	</insert>
+	<delete id="DeleteAll">
+		delete from error_exam_tem
+	</delete>
 </sqlMap>

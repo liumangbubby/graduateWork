@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
@@ -21,6 +22,17 @@ public class StuEnrollDAO extends SqlMapClientDaoSupport {
 	public List<stu_enroll> getAll() {
 		List<stu_enroll> list = null;
 		return list = getSqlMapClientTemplate().queryForList("selectAll");
+	}
+	
+	/**
+	 * 根据id查询记录
+	 * @param id
+	 * @return
+	 */
+	public stu_enroll getOne(long id){
+		Map map = new HashMap();
+		map.put("id", id);
+		return (stu_enroll) this.getSqlMapClientTemplate().queryForObject("SelectStuEnroll_4", map);
 	}
 
 	/**

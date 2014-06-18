@@ -28,12 +28,20 @@ public class TbUserDAO extends SqlMapClientDaoSupport{
 
 	public List<tb_user> getUserAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getSqlMapClientTemplate().queryForList("SelectAllUser");
+	}
+	
+	public tb_user getUser(int userId){
+		return (tb_user) this.getSqlMapClientTemplate().queryForObject("SelectUser",userId);
 	}
 	
 	public tb_user getPID(String userid){
 		Map map = new HashMap();
 		map.put("userId", userid);
 		return (tb_user) this.getSqlMapClientTemplate().queryForObject("SelectUser", map);
+	}
+
+	public void updateUser(Map map) {
+		this.getSqlMapClientTemplate().update("UpdateUser", map);
 	}
 }

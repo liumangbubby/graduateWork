@@ -38,4 +38,28 @@ public class error_exam_tem {
 		return "error_exam_tem [tem_id=" + tem_id + ", user_id=" + user_id
 				+ ", exam_id=" + exam_id + "]";
 	}
+	//equals hash
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + exam_id;
+		result = prime * result + user_id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		error_exam_tem other = (error_exam_tem) obj;
+		if (exam_id != other.exam_id)
+			return false;
+		if (user_id != other.user_id)
+			return false;
+		return true;
+	}
 }

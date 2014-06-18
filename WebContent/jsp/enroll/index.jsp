@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" href="/stuenroll/css/index.css" rel="stylesheet"/>
 <script type="text/javascript" src="/stuenroll/js/jquery-1.6.4.js"></script>
-<script type="text/javascript" src="/stuenroll/js/jquery.msgbox.js"></script>
 <script type="text/javascript" src="/stuenroll/js/main_index.js"></script>
 <script type="text/javascript" src="/stuenroll/js/jquery.msgbox.js"></script>
 <title>游客主页</title>
@@ -58,7 +57,7 @@
 				        </li> 
 				        <li><a id="sx" href="javascript:void(0);">顺序练习</a></li> 
 				        <li><a id="ranTest" href="javascript:void(0);" class="login_chick">随机练习</a></li> 
-				        <li><a href="javascript:void(0);" class="login_chick">模拟测试</a></li>
+				        <li><a href="javascript:void(0);" class="login_chick" id="moni">模拟测试</a></li>
 				        <li class="last"> 
 				            <img class="corner_left" alt="" src="../../images/corner_left.png"/> 
 				            <img class="middle" alt="" src="../../images/dot.gif"/> 

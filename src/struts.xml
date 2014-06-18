@@ -26,6 +26,12 @@
 		</action>
 		<action name="UserDetailsAction" class="UserDetailsAction">
 		</action>
+		<action name="TextTreatErrorInfo" class="TextTreatErrorInfo">
+		</action>
+		<action name="TextPaperAction" class="TextPaperAction">
+			<result name="success">/jsp/enroll/test.jsp</result>
+			<result name="finish">/jsp/enroll/score.jsp</result>
+		</action>
 	</package>
 	<package name="backyard" namespace="/jsp" extends="struts-default">
 		<!-- 

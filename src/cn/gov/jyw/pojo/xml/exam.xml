@@ -44,10 +44,32 @@
 		where
 			exam.exam_id = #id#
 	</select>
+	
+	<select id="getExam3" resultMap="ExamResult" parameterClass="java.util.Map">
+		select
+			exam.*,chooses.*
+		from
+			exam left join exam_choose chooses on exam.exam_id = chooses.exam_id
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id">
+				exam.exam_id = #id#
+			</isNotNull>
+			<isNotNull prepend="and" property="examclass">
+				exam.exam_class = #examclass#
+			</isNotNull>
+		</dynamic>
+	</select>
 
 	<select id="getChooses" resultMap="ChooseResult" parameterClass="int">
-		select * from exam_choose where
+		select choose_id,exam_id,choose_body,right_answer_flag,choose_img from exam_choose where
 		exam_id = #value#
+	</select>
+	
+	<select id="checkAnswer" resultClass="int" parameterClass="java.util.Map">
+		select 1 from exam_choose where
+			exam_id = #examid# 
+		and 
+			right_answer_flag = #answer#
 	</select>
 </sqlMap>
 	

@@ -160,6 +160,10 @@
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	<bean id="errorDao" class="cn.gov.jyw.dao.ExamErrorDAO">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
 	<!-- *************** Bean *************************************************************************** -->
 
@@ -295,6 +299,14 @@
 	<bean id="errorTemServ" class="cn.gov.jyw.service.ErrorTemService" lazy-init="true">
 		<property name="errorTemDao" ref="errorTemDao"></property>
 	</bean>
+	<bean id="TreatErrorInfoService" class="cn.gov.jyw.service.TreatErrorInfoService" lazy-init="true">
+		<property name="errorDao" ref="errorDao"></property>
+		<property name="errorTemDao" ref="errorTemDao"></property>
+		<property name="userDao" ref="tbuserDao"></property>
+	</bean>
+	<bean id="ExportPaper" class="cn.gov.jyw.util.ExportPaper" lazy-init="true">
+		<property name="examServ" ref="ExamService"></property>
+	</bean>
 	<!-- *************** Action *************************************************************************** -->
 
 	<bean id="SchoolEnrollAction" class="cn.gov.jyw.action.enroll.SchoolEnrollAction"
@@ -429,6 +441,15 @@
 		<property name="detailsServ" ref="UserDetailsService"></property>
 		<property name="errorServ" ref="errorTemServ"></property>
 	</bean>
+	<bean id="TextTreatErrorInfo" class="cn.gov.jyw.action.enroll.TextTreatErrorInfo" lazy-init="true">
+		<property name="treatErrorServ" ref="TreatErrorInfoService"></property>
+	</bean>
+	<bean id="TextPaperAction" class="cn.gov.jyw.action.enroll.TextPaperAction" lazy-init="true">
+		<property name="stuServ" ref="StuEnrollService"></property>
+		<property name="userServ" ref="TbUserService"></property>
+		<property name="ep" ref="ExportPaper"></property>
+		<property name="examServ" ref="ExamService"></property>
+	</bean>
 
 	<!-- Web服务 -->
 	<bean lazy-init="true" class="cn.gov.jyw.service.web.HelloImpl"
@@ -472,4 +493,31 @@
 	</bean>
 	<jaxws:endpoint id="StuEnrollPoint" implementor="#StuEnrollImpl"
 		address="/StuEnroll"></jaxws:endpoint>
+	<!-- ******************************************		quartz		************************************** -->
+	<bean id="TreatErrorInfoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="TreatErrorInfoService"/>
+		<property name="targetMethod" value="addTreatErrInfo"/>
+	</bean>
+	<bean id="TreatErrorInfoTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="TreatErrorInfoJobDetail"/>
+		</property>
+		<!-- cron表达式，以下是在每分钟的10秒，15秒，20秒,45秒执行-->
+		<property name="cronExpression">
+		<value>0 0 2 * * ?</value>
+		<!--  0 0 2 * * ?  -->
+		</property>
+	</bean>
+	<bean name="TreatErrorInfoScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+		<property name="triggers">
+		<list>
+			<ref bean="TreatErrorInfoTrigger" />
+		</list>
+		</property>
+		<property name="schedulerContextAsMap">
+		<map>
+			<entry key="timeout" value="30" />
+		</map>
+		</property>
+	</bean>
 </beans>

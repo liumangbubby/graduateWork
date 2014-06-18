@@ -16,11 +16,17 @@
 	<select id="SelectTbUser" parameterClass="java.util.Map" resultClass="int">
 		select id from tb_user where username=#userName# and password=HEX(AES_ENCRYPT(#paseWord#,'HelloWorldHelloICSS'))
 	</select>
-	<select id="SelectUser" parameterClass="java.util.Map" resultMap="userresultMap">
+	<select id="SelectAllUser" resultMap="userresultMap">
+		select * from tb_user
+	</select>
+	<select id="SelectUser" parameterClass="int" resultMap="userresultMap">
 		select * from tb_user where id=#userId#
 	</select>
 	<insert id="InsertTbUser" parameterClass="tbuser">
 		insert into
 		tb_user(username,password,enroll_id) values(#userName#,HEX(AES_ENCRYPT(#paseWord#,'HelloWorldHelloICSS')),#enrollId#)
 	</insert>
+	<update id="UpdateUser" parameterClass="java.util.Map">
+		update tb_user set exam_score = #score# where id = #userid#
+	</update>
 </sqlMap>

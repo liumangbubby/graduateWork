@@ -55,7 +55,8 @@ public class UserDetailsAction extends ActionSupport{
 			}
 			errorServ.addErrorTem(list);
 		}
-		detailsServ.addUserDetails(new user_details(user_id,new Timestamp(System.currentTimeMillis()),exam_no,type_no));
+		if(exam_no != -1)
+			detailsServ.addUserDetails(new user_details(user_id,new Timestamp(System.currentTimeMillis()),exam_no,type_no));
 		return "null";
 	}
 	//查询用户题目进度

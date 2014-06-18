@@ -25,7 +25,7 @@ var uLED = function (conf) {
     if (conf.color == "#FF0000") {
         color = conf.color;
         led = font1;
-        format = "ddd:hh:mm:ss";
+        format = "mm:ss";
     }
     else if (conf.color == "#af0") {
         color = conf.color;
@@ -77,7 +77,8 @@ var uLED = function (conf) {
     }
     if (type == "countdown") {
         n_t = mtimer(start.getFullYear() + 1 + ":1:1:0:0:00");
-        new_date = new Date(n_t[0], n_t[1] - 1, n_t[2], n_t[3], n_t[4]);
+//        new_date = new Date(n_t[0], n_t[1] - 1, n_t[2], n_t[3], n_t[4]);
+        new_date = new Date(new Date().getTime() + 10000);
         for (i = 0; i < 12 * 6; i++) {
             dig[i] = [];
             for (var y = 0; y < 7; y++) {
@@ -127,12 +128,21 @@ var uLED = function (conf) {
         m_h = parseInt((time_rem - m_d * 86400) / 3600);
         m_m = parseInt((time_rem - m_d * 86400 - m_h * 3600) / 60);
         m_s = parseInt(time_rem - m_d * 86400 - m_h * 3600 - m_m * 60);
-        num = (m_d < 10 ? "00" : (m_d > 100 ? "" : "0")) + m_d + ":" + (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+//        num = (m_d < 10 ? "00" : (m_d > 100 ? "" : "0")) + m_d + ":" + (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+        num = (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
         if ((new_date.getTime() - d.getTime()) >= 0) {
             dig_to_led(num);
         }
         else {
-            dig_to_led("000:00:00:00");
+        	/*//时间到，下一题
+        	if(parseInt($("#curent_qu_no").text()) < parseInt($("#total_qu_no").text())){
+        		$("#next").click();
+        		updateLed1(new Date());
+        	}
+        	//结束考试
+        	else{
+        		
+        	}*/
         }
     }
     var flash_dot = true;
