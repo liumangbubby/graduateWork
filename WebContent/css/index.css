@@ -493,3 +493,6 @@ body{
 	-moz-opacity:0.8;
 	opacity: 0.8;
 }
+#login_flag,#random_flag,#sx_flag,#error_list{
+	display: none;
+}
