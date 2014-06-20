@@ -155,7 +155,7 @@
 							</td>
 						</tr>
 						<tr id='tr_gradute_g'>
-							<td height="52" align="right" class="modify_td">毕业院校：</td>
+							<td height="52" align="right" class="modify_td">工作单位：</td>
 							<td class="modify_td">
 								<input name="gradute_g" id="gradute_g" type="text" class="modify_in_1" value='${enroll.gradute_g }' />
 							</td>
@@ -187,7 +187,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="52" align="right" class="modify_td">所学专业：</td>
+							<td height="52" align="right" class="modify_td">工作类型：</td>
 							<td class="modify_td">
 								<select name="specialty" class="modify_select chzn-select" tabindex="2">
 									<s:iterator id="obj" value="specialtyList">
@@ -263,7 +263,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="52" align="right" class="modify_td">拟申报专业：</td>
+							<td height="52" align="right" class="modify_td">拟申报类型：</td>
 							<td class="modify_td">
 								<!-- 
 								<select name="specialty_submit" class="modify_select chzn-select" tabindex="2">
@@ -277,7 +277,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="52" align="right" class="modify_td">拟培训地点：</td>
+							<td height="52" align="right" class="modify_td">拟报考地点：</td>
 							<td class="modify_td">
 								<!--  
 								<select name="place" class="modify_select chzn-select" tabindex="2">
@@ -353,7 +353,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="52" align="right" class="modify_td">参与状态：</td>
+							<td height="52" align="right" class="modify_td">审核状态：</td>
 							<td class="modify_td">
 								<!-- 
 								<select name="join_state" class="modify_select chzn-select" tabindex="2">
@@ -371,7 +371,9 @@
 					</table>
 					<p align="center">
 						<input type="button" class="btn_1" value="保存更新" onclick="submitUpdateEnroll()"/> 
+						<!-- 
 						<input type="reset" class="btn_1" value="取消更改" />
+						-->
 					</p>
 				</fieldset>
 				</form>

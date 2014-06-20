@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>参与状态管理</title>
+<title>审核状态管理</title>
 <link href="../../css/backyard.css" rel="stylesheet" type="text/css" />
 <script src="../../js/jquery-1.6.4.js"></script>
 <script src="../../js/backyard.js"></script>
@@ -31,7 +31,7 @@
 <div class="main_div">
   <jsp:include page="left_nav.jsp"></jsp:include>
   <div class="right_div spe_div">
-    <p class="spe_title">参与状态管理</p>
+    <p class="spe_title">审核状态管理</p>
     <hr />
     <form id="form_1" method="post" action="/stuenroll/jsp/backyard/JoinStateAction!delete.action">
     <table width="700" border="0" cellpadding="0" cellspacing="0" class="spe_table">

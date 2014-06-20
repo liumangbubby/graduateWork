@@ -19,6 +19,9 @@
 			select max(savedate) from user_details where user_id = #user_id#
 			)
 	</select>
+	<select id="QueryErrorByUser" parameterClass="int" resultMap="errorresultMap">
+		select * from exam_error where user_id = #userid#
+	</select>
 	<insert id="InsertErrors" parameterClass="examerror">
 		insert into
 		exam_error(user_id,exam_id,error_time) values(#user_id#,#exam_id#,#error_time#)

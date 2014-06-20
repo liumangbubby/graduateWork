@@ -17,6 +17,8 @@
 	<div id="random_flag" style="position: absolute;"></div>
 	<div id="sx_flag" style="position: absolute;"></div>
 	<div id="error_list" style="position: absolute;"></div>
+	<div id="re_error_list" style="position: absolute;"></div>
+	<div id="answer_info" style="position: absolute;"></div>
 	<div id="login_window"></div>
 	<div id="zhezhao"></div>
 	<div id="top" class="layout_top">

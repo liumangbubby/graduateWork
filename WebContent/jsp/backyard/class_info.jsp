@@ -222,7 +222,7 @@
   		</tr>
   		<tr>
   			<td height="50" width="85">班级编号：</td>
-  			<td><input name="name" id='className' class="input" style="width: 290px;" readonly="readonly"/></td>
+  			<td><input name="name" id='className' class="input" style="width: 290px;"/></td>
   		</tr>
   		<tr>
   			<td height="60"></td>

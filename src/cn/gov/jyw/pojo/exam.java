@@ -10,6 +10,8 @@ public class exam {
 	private String exam_mappingno;
 	private String exam_body;
 	private String body_img;
+	private int exam_class;
+	private String answer_info;
 	private List<exam_choose> chooses = new LinkedList<exam_choose>();
 	public int getExam_id() {
 		return exam_id;
@@ -53,11 +55,24 @@ public class exam {
 	public void setChooses(List<exam_choose> chooses) {
 		this.chooses = chooses;
 	}
+	public String getAnswer_info() {
+		return answer_info;
+	}
+	public void setAnswer_info(String answer_info) {
+		this.answer_info = answer_info;
+	}
+	public int getExam_class() {
+		return exam_class;
+	}
+	public void setExam_class(int exam_class) {
+		this.exam_class = exam_class;
+	}
 	@Override
 	public String toString() {
 		return "exam [exam_id=" + exam_id + ", exam_no=" + exam_no
 				+ ", exam_type=" + exam_type + ", exam_mappingno="
 				+ exam_mappingno + ", exam_body=" + exam_body + ", body_img="
-				+ body_img + ", chooses=" + chooses + "]";
+				+ body_img + ", answer_info=" + answer_info + ", chooses="
+				+ chooses + "]";
 	}
 }

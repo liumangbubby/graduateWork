@@ -3,6 +3,8 @@ $(document).ready(function() {
 	var visURL = null;
 	//全局变量，保存题目总数
 	var total_exam = 0;
+	//全局变量，保存错题信息
+	var errorlist = new Array();
 //	$("#total").hide();
 	//设置导航栏信息
 	$.getJSON('/stuenroll/ajax/QuesInfoAjax',function(data){
@@ -47,6 +49,14 @@ $(document).ready(function() {
 		//控制随机
 		if($("#random_flag").attr("class") == "flag"){
 			url = "/stuenroll/ajax/ExamAjax?ids=-1&userid="+userid;
+		}
+		if($('#re_error_list').attr('flag') == 'flag'){
+			if(errorlist.length > 0)
+				url = "/stuenroll/ajax/ExamAjax?ids=" + errorlist.pop();
+			else{
+				$('#container').jalert('没有错题了！');
+				return;
+			}
 		}
 		/*
 		var url = "/stuenroll/ajax/ExamAjax?ids=29";
@@ -190,8 +200,25 @@ $(document).ready(function() {
 				});*/
 				$(".layout_middle_main center").load('/stuenroll/jsp/enroll/chart.jsp');
 			}
-			else if($.trim($(this).text() == "模拟测试")){
+			else if($(this).attr("id") == "moni"){
 				window.location.href="/stuenroll/jsp/TextPaperAction!toPaper.action?userid="+$("#login_flag").text();
+			}else if($(this).attr("id") == "ct"){
+				var url = "/stuenroll/ajax/ExamErrorAjax?userid="+$("#login_flag").text();
+				$.getJSON(url,function(data){
+					if(data.stutas == 100){
+						errorlist = new Array();
+						$('#re_error_list').attr('flag','flag');
+						$("#random_flag").removeAttr("class");
+						$('#previous').attr('disabled','disabled');
+						for(var i = 0; i < data.data.length ; i++){
+							errorlist.push(data.data[i].exam_id);
+						}
+						url = "/stuenroll/ajax/ExamAjax?ids=" + errorlist.pop();
+						$.getJSON(url,function(data){
+							setText(data);
+						});
+					}
+				});
 			}
 		}
 	});
@@ -223,6 +250,7 @@ $(document).ready(function() {
 					data = data.data;
 					setText(data);
 					$("#random_flag").attr("class","flag");
+					$('#re_error_list').removeAttr('flag');
 					$("#previous").attr("disabled","disabled");
 				}else if(data.stutas == 500){
 					alert("出错"+data.msg);
@@ -280,6 +308,17 @@ $(document).ready(function() {
 			});
 		}
 	});
+	$("#help").click(function(){
+		var msg = $("#answer_info").text();
+		if(msg.length == 0){
+			msg = "此题暂无详解信息！";
+		}
+		$("#container").jalert(msg,{
+				title: '答案详解',
+				width: '350',
+				height: '300',
+				mask : false});
+	});
 	//页面设置内容函数
 	function setText(data){
 		if(data.stutas != undefined && data.stutas == 500){
@@ -289,6 +328,7 @@ $(document).ready(function() {
 		if(data.data != undefined){
 			data = data.data;
 		}
+		$("#answer_info").text(data[0].answer_info);
 		$("#ques_body").text(data[0].exam_body);
 		$("#ques_id").html(data[0].exam_id);
 		$("#curent_qu_no").text(data[0].exam_id);

@@ -8,7 +8,7 @@
 <meta http-equiv="Pragma" content="no-cache"></meta>  
 <meta http-equiv="Cache-Control" content="no-cache"></meta>  
 <meta http-equiv="Expires" content="0"></meta> 
-<title>培训学校管理</title>
+<title>驾校管理</title>
 <link href="../../css/backyard.css" rel="stylesheet" type="text/css" />
 <script src="../../js/jquery-1.6.4.js"></script>
 <script src="../../js/edu_school.js"></script>
@@ -35,7 +35,7 @@
 <div class="main_div">
   <jsp:include page="left_nav.jsp"></jsp:include>
   <div class="right_div spe_div">
-    <p class="spe_title">培训学校管理</p>
+    <p class="spe_title">驾校管理</p>
     <hr />
     <form id="form_1" method="post" action="/stuenroll/jsp/backyard/EduSchoolAction!delete.action">
     <table  border="0" cellpadding="0" cellspacing="0" class="spe_table">

@@ -64,7 +64,7 @@
 							<td width="23%">
 								<input name="pid" type="text" class="input" style="width:220px;" id="textfield3" value="${pid}" title="点击回车键搜索记录"/>
 							</td>
-							<td width="11%" align="center">申报专业</td>
+							<td width="11%" align="center">申报类型</td>
 							<td width="24%">
 								<span id="a1">
 								<select name="specialtySubmit" id="specialtySubmit" class="chzn-select" tabindex="2" style="width:230px;">
@@ -99,7 +99,7 @@
 								</select>
 								</span>
 							</td>
-							<td align="center">参与状态</td>
+							<td align="center">审核状态</td>
 							<td>
 								<select name="joinState" class="chzn-select" tabindex="2" style="width:230px;">
 									<option value="">- 选择 -</option>
@@ -119,7 +119,7 @@
 					${order==2?'大序号↓':''}
 					${order==3||order==4?'大序号':''}
 					</td>
-					<td width="90" align="center" class="cell cell_title" style="background-color: #D9007E">参与状态</td>
+					<td width="90" align="center" class="cell cell_title" style="background-color: #D9007E">审核状态</td>
 					<td width="222" align="center" class="cell cell_title" style="background-color: #D9007E">培训机构</td>
 					<td width="106" align="center" class="cell cell_title" style="background-color: #D9007E">班级编号</td>
 					<td width="75" align="center" id='xiaoxuhao' class="cell cell_title" onclick="orderXiaoXuHao()" style="cursor: pointer;background-color: #D9007E">
@@ -130,7 +130,7 @@
 					<td width="95" align="center" class="cell cell_title" style="background-color: #D9007E">姓名</td>
 					<td width="171" align="center" class="cell cell_title" style="background-color: #D9007E">身份证号</td>
 					<td width="115" align="center" class="cell cell_title" style="background-color: #D9007E">电话</td>
-					<td width="94" align="center" class="cell cell_title" style="background-color: #D9007E">申报专业</td>
+					<td width="94" align="center" class="cell cell_title" style="background-color: #D9007E">申报类型</td>
 				</tr>
 				<s:iterator id="obj" value="recordList" status="st">
 					<tr class="row" id="pid_${obj.id}" name='rw' onclick="clickRow('${obj.id}')" style="background-color: ${st.index%2!=0?'#fcfcfc':'#E3FAE3'}">

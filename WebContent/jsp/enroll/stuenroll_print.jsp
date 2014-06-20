@@ -121,7 +121,7 @@
 					<td colspan="5" class="td_1 print_td" id="t9">${enroll.pid }</td>
 				</tr>
 				<tr>
-					<td class="td_1">毕业院校</td>
+					<td class="td_1">工作单位</td>
 					<td colspan="3" class="td_1 print_td" id="t4">${enroll.gradute_g}</td>
 					<td class="td_1">毕业年届</td>
 					<td class="td_1" id='t13' class="td_1 print_td">${enroll.gradute_y}</td>
@@ -133,7 +133,7 @@
 					<td class="td_1" id="t5">${enroll.education}</td>
 				</tr>
 				<tr>
-					<td class="td_1">所学专业</td>
+					<td class="td_1">工作类型</td>
 					<td colspan="3" class="td_1 print_td" onclick="clickSpecialty()" id='t16'>${enroll.specialty}</td>
 					<td colspan="2" class="td_1">健康状况</td>
 					<td class="td_3" >${enroll.healthy }</td>
@@ -165,7 +165,7 @@
 				</tr>
 
 				<tr>
-					<td rowspan="1" class="td_1">拟申报专业</td>
+					<td rowspan="1" class="td_1">拟申报类型</td>
 					<td colspan="3" rowspan="1" class="td_1 print_td" id="t21">${enroll.specialty_submit}</td>
 					<td colspan="2" class="td_1"><p align="center">拟求职意向</p></td>
 					<td class="td_3" onclick="clickPlace()" id="t22">${enroll.intention}</td>

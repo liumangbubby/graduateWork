@@ -15,7 +15,7 @@ import com.ibatis.sqlmap.client.SqlMapExecutor;
 
 public class ExamErrorDAO extends SqlMapClientDaoSupport {
 	public List<exam_error> queryExamErrorByUser(int userid){
-		return null;
+		return this.getSqlMapClientTemplate().queryForList("QueryErrorByUser", userid);
 	}
 	public void addExamError(final List<exam_error> errors){
 		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback() {

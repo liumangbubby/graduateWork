@@ -18,6 +18,9 @@
 		</action>
 		<action name="ExamAction" class="ExamAction">
 			<result name="queryOne">/jsp/enroll/paper.jsp</result>
+			<result name="queryAll">/jsp/backyard/examindex.jsp</result>
+			<result name="success">/jsp/backyard/examindex.jsp</result>
+			<result name="modify">/jsp/backyard/exammodify.jsp</result>
 		</action>
 		<action name="UserLoginAction" class="UserLoginAction">
 		</action>

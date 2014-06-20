@@ -429,6 +429,8 @@
 	</bean>
 	<bean id="ExamAction" class="cn.gov.jyw.action.enroll.ExamAction" lazy-init="true">
 		<property name="examService" ref="ExamService"></property>
+		<property name="specialtyReportService" ref="SpecialtyReportService"></property>
+		<property name="pageBean" ref="PageBean"></property>
 	</bean>
 	<bean id="UserLoginAction" class="cn.gov.jyw.action.enroll.UserLoginAction" lazy-init="true">
 		<property name="userService" ref="TbUserService"></property>

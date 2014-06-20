@@ -16,6 +16,8 @@
 		<result property="exam_mappingno" column="exam_mappingno" />
 		<result property="exam_body" column="exam_body" />
 		<result property="body_img" column="body_img" />
+		<result property="exam_class" column="exam_class" />
+		<result property="answer_info" column="answer_info" />
 		<!--  
 		<result property="chooses" column="exam_id" select="getChooses" />
 		-->
@@ -30,6 +32,20 @@
 		<result property="right_answer_flag" column="right_answer_flag" />
 		<result property="choose_img" column="choose_img" />
 	</resultMap>
+	
+	<resultMap class="Exam" id="ExamResult2" groupBy="exam.exam_id">
+		<result property="exam_id" column="exam_id" />
+		<result property="exam_no" column="exam_no" />
+		<result property="exam_type" column="exam_type" />
+		<result property="exam_mappingno" column="exam_mappingno" />
+		<result property="exam_body" column="exam_body" />
+		<result property="body_img" column="body_img" />
+		<result property="exam_class" column="exam_class" />
+		<result property="answer_info" column="answer_info" />
+		<!--  
+		<result property="chooses" column="exam_id" select="getChooses" />
+		-->
+	</resultMap>
 
 
 	<select id="getExam" resultMap="ExamResult" parameterClass="int">
@@ -43,6 +59,19 @@
 			exam left join exam_choose chooses on exam.exam_id = chooses.exam_id
 		where
 			exam.exam_id = #id#
+	</select>
+	
+	<select id="queryAll" resultMap="ExamResult2" parameterClass="java.util.Map">
+		select * from exam
+		<dynamic prepend="order by" close=" ">
+			<isEqual property="order" compareValue="1">
+				exam_id asc
+			</isEqual>
+			<isEqual property="order" compareValue="2">
+				exam_id desc
+			</isEqual>
+		</dynamic>
+		limit #start#,#limit#
 	</select>
 	
 	<select id="getExam3" resultMap="ExamResult" parameterClass="java.util.Map">
@@ -71,5 +100,17 @@
 		and 
 			right_answer_flag = #answer#
 	</select>
+	
+	<select id="getExamCount" resultClass="long">
+		select count(*) from exam
+	</select>
+	
+	<delete id="deleteExam" parameterClass="List">
+		delete from exam where exam_id in (
+		<iterate conjunction="," >
+			#[]#
+		</iterate>
+		)
+	</delete>
 </sqlMap>
 	

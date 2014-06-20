@@ -75,7 +75,7 @@ color: #0047B6;
 						</span>
 						</td>
 						<!-- 
-						<td align="center">参与状态：</td>
+						<td align="center">审核状态：</td>
 						<td>
 							<a class='op_btn' id='all'>全部</a>&nbsp;&nbsp;
 							<a class='op_btn' id='upload'>已传<a />&nbsp;&nbsp;

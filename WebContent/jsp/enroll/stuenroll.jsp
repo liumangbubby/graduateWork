@@ -237,7 +237,7 @@ $(document).ready(
 					</tr>
 					<tr>
 					<!-- 
-						<td class="td_1">所学专业</td>
+						<td class="td_1">工作类型</td>
 						<td colspan="3" class="td_1" onclick="clickSpecialty()" id='t16'>
 							<span id='spec' class='in_13'></span> 
 							<select id="specialty" class="in_13" name="specialty" onblur="blurSpecialty()" onchange="checkSpecialty()">

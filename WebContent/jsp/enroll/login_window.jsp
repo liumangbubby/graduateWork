@@ -29,9 +29,10 @@
 						dataType:"json",
 						success:function(data){
 							if($.trim(data) == $.trim("true")){
+								$("#cheNum").css('border','');
 								$("fieldset input[type=submit]").removeAttr("disabled");
 							}else{
-								alert("验证码错误");
+								$("#cheNum").css('border','1px solid red');
 							}
 						}
 					});

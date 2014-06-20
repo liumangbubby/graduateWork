@@ -23,6 +23,16 @@ public class ExamDao extends SqlMapClientDaoSupport{
 	public List<Object[]> queryOneExam(Map map){
 		return this.getSqlMapClientTemplate().queryForList("getExam3", map);
 	}
+	public List<Object[]> queryAll(int start, int limit, int order){
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("limit", limit);
+		map.put("order", order);
+		return this.getSqlMapClientTemplate().queryForList("queryAll",map);
+	}
+	public Long getExamCount(){
+		return (Long) this.getSqlMapClientTemplate().queryForObject("getExamCount");
+	}
 	public boolean checkAnswer(int exam_id, int answer) {
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		map.put("examid", exam_id);
@@ -31,5 +41,8 @@ public class ExamDao extends SqlMapClientDaoSupport{
 		if(right_answer == null)
 			return false;
 		return right_answer == 1 ? true : false;
+	}
+	public void delExam(List<Integer> list){
+		this.getSqlMapClientTemplate().delete("deleteExam",list);
 	}
 }

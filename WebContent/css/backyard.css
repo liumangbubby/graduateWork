@@ -209,3 +209,6 @@
 	border:solid 2px; 
 	background:#AE0057;
 }
+img{
+	cursor: pointer;
+}

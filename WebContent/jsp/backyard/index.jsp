@@ -49,7 +49,7 @@
 							<td width="23%">
 								<input name="pid" type="text" class="input" style="width:220px;" id="textfield3" value="${pid}" title="点击回车键搜索记录"/>
 							</td>
-							<td width="11%" align="center">申报专业</td>
+							<td width="11%" align="center">申报类型</td>
 							<td width="24%">
 								<span id='a1'>
 								<select name="specialtySubmit" id='specialtySubmit' class="chzn-select" tabindex="2" style="width:230px;">
@@ -91,7 +91,7 @@
 								</select>
 								</span>
 							</td>
-							<td align="center">参与状态</td>
+							<td align="center">审核状态</td>
 							<td>
 								<select name="joinState" class="chzn-select" tabindex="2" style="width:230px;">
 									<option value="">- 选择 -</option>
@@ -111,8 +111,8 @@
 					${order==2?'大序号↓':''}
 					${order==3||order==4||order=='7'||order=="8"?'大序号':''}
 					</td>
-					<td width="90" align="center" class="cell cell_title">参与状态</td>
-					<td width="222" align="center" class="cell cell_title">培训机构</td>
+					<td width="90" align="center" class="cell cell_title">审核状态</td>
+					<td width="222" align="center" class="cell cell_title">申报类型</td>
 					<td width="106" align="center" class="cell cell_title">班级编号</td>
 					<td width="75" align="center" id='xiaoxuhao' class="cell cell_title" onclick="orderXiaoXuHao()" style="cursor: pointer">
 						${order==''||order==null||order=='1'||order=="2"||order=='7'||order=="8"?"小序号":"" }
@@ -127,14 +127,13 @@
 						${order=='8'?"备注↓":"" }
 						${order<7?"备注":"" }
 					</td>
-					<td width="94" align="center" class="cell cell_title">申报专业</td>
 				</tr>
 
 				<s:iterator id="obj" value="enrollList" status="st">
 					<tr class="row" id="pid_${obj.id}" name='rw' onclick="clickRow('${obj.id}')" style="background-color: ${st.index%2!=0?'#fcfcfc':'#E3FAE3'}">
 						<td height="30" align="center" name="t" class="cell cell_num">${obj.id}</td>
 						<td align="center" id='js_${obj.id }' class="cell" >${obj.join_state}</td>
-						<td align="center" class="cell" >${obj.edu_school}</td>
+						<td align="center" class="cell" >${obj.specialty_submit}</td>
 						<td class="cell cell_num" align="center" id='class_no_${obj.id}'>${obj.class_no}</td>
 						<td class="cell cell_num" align="center">${obj.stu_no}</td>
 						<td class="cell" align="center" >${obj.name}</td>
@@ -142,7 +141,6 @@
 						<td class="cell cell_num" align="center">${obj.tel}</td>
 						<td class="cell cell_num" align="center">
 						<div title="${obj.remark}" style='text-overflow:ellipsis;white-space:nowrap;-o-text-overflow:ellipsis;overflow:hidden;width:70px;'>${obj.remark}</div></td>
-						<td class="cell" align="center">${obj.specialty_submit}</td>
 					</tr>
 				</s:iterator>
 
@@ -216,7 +214,7 @@
 		<form method="post" id="form_3" action="/stuenroll/jsp/backyard/ManageAction!updateStuEnrollBacth.action">
   			<table border="0" cellpadding="0" cellspacing="0" style="font-size: 14px;">
   			<tr>
-  				<td height="50" width="85">申报专业：</td>
+  				<td height="50" width="85">申报类型：</td>
   				<td>
   					<select name="specialtySubmit" id='type' style="width:280px;height:32px;" onchange="changeType()">
 						<option value="-1">- 选择 -</option>
@@ -246,7 +244,7 @@
   				</td>
   			</tr>
   			<tr>
-  				<td height="50" width="85">参与状态：</td>
+  				<td height="50" width="85">审核状态：</td>
   				<td>
   					<select name="joinState" id="joinState" style="width:280px;height:32px;">
 						<option value="">- 选择 -</option>

@@ -82,3 +82,9 @@ function nav_13() {
 function nav_14() {
 	window.location.href = "/stuenroll/jsp/backyard/StopAction!stop.action";
 }
+/**
+ * 试题管理
+ */
+function nav_15() {
+	window.location.href = "/stuenroll/jsp/backyard/ExamAction!examQueryAll.action";
+}

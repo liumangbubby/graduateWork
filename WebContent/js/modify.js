@@ -1,10 +1,14 @@
 function submitUpdateEnroll() {
-	if (!checkName() | !checkGraduteG() | !checkPid() | !checkAddress()
+	/*if (!checkName() | !checkGraduteG() | !checkPid() | !checkAddress()
 			| !checkHousehold() | !checkTel() | !checkEmail()
 			| !checkHomeAddress() | !checkHomeTel() | !checkHealthy()) {
 		alert('请正确填写数据！');
 		return;
-	} else {
+	}*/
+	if(false){
+		
+	}
+	else {
 		var rs = confirm("确认修改申报信息？");
 
 		if (rs) {

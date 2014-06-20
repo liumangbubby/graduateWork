@@ -38,23 +38,27 @@
 	background-color: #008BCE;
 }
 </style>
+<script type="text/javascript" src="/stuenroll/js/nav.js"></script>
 </head>
 <body>
 	<div class="left_div" style="-moz-user-select: none; -webkit-user-select: none; ">
-		<div class="left-tag" >报名信息</div>
-		<div class="left-tag" >归档数据</div>
-		<div class="left-tag" >课程表</div>
-		<div class="left-tag" >中退管理</div>
-		<div class="left-tag" >申报专业</div>
-		<div class="left-tag" >参与状态</div>
-		<div class="left-tag" >学校管理</div>
-		<div class="left-tag" >班级管理</div>
-		<div class="left-tag" >用户管理</div>
-		<div class="left-tag" >年届管理</div>
-		<div class="left-tag" >培训地点</div>
-		<div class="left-tag" >系统管理</div>
-		<div class="left-tag" >数据导入</div>
-		<div class="left-tag" >退出系统</div>
+		<div class="left-tag" onclick="nav_1();">报名信息</div>
+		<!-- 
+		<div class="left-tag" onclick="nav_10();">归档数据</div>
+		<div class="left-tag" onclick="nav_13();">课程表</div>
+		<div class="left-tag" onclick="nav_14();">中退管理</div>
+		<div class="left-tag" onclick="nav_9();">数据导入</div>
+		<div class="left-tag" onclick="nav_7();">年届管理</div>
+		 -->
+		<div class="left-tag" onclick="nav_15();">试题管理</div>
+		<div class="left-tag" onclick="nav_2();">申报类型</div>
+		<div class="left-tag" onclick="nav_3();">审核状态</div>
+		<div class="left-tag" onclick="nav_5();">驾校管理</div>
+		<div class="left-tag" onclick="nav_4();">班级管理</div>
+		<div class="left-tag" onclick="nav_6();">用户管理</div>
+		<div class="left-tag" onclick="nav_11();">报考地点</div>
+		<div class="left-tag" onclick="nav_8();">系统管理</div>
+		<div class="left-tag" onclick="nav_12();">退出系统</div>
 	</div>
 </body>
 </html>
